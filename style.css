@@ -1,0 +1,613 @@
+/* --- Configuración Global y Variables --- */
+:root {
+    /* Modo oscuro (por defecto). Colores de alto contraste y legibles */
+    --bg: #0b1220;         /* página fondo oscuro */
+    --card-bg: #0f1724;    /* tarjetas ligeramente más claras */
+    --primary-color: #00b4d8; /* acento principal (azul brillante) */
+    --secondary-color: #6fcf97; /* acento secundario (verde) */
+    --accent-color: #ff6b6b; /* acento cálido para contraste */
+    --text-light: #ffffff;
+    --text-dark: #dbeafe;  /* texto claro secundario */
+    /* Sidebar & toggles (adaptables por tema) */
+    --sidebar-bg: linear-gradient(180deg, rgba(11,18,32,0.98), rgba(15,23,36,0.98));
+    --sidebar-text: var(--text-light);
+    --sidebar-border: rgba(255,255,255,0.03);
+    --toggle-bg: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    --hero-overlay: linear-gradient(180deg, rgba(0,0,0,0.36), rgba(0,0,0,0.18));
+    --soft-bg: linear-gradient(180deg,#07101a 0%, #0b1220 100%);
+    --shadow: 0 6px 20px rgba(0,0,0,0.6);
+    --hover-shadow: 0 20px 40px rgba(0,180,216,0.12);
+}
+
+/* Clase para modo claro (opcional toggle) */
+body.light {
+    --bg: #ffffff;
+    --card-bg: #ffffff;
+    --primary-color: #1b6b53; /* verde (legible) */
+    --secondary-color: #f7b7a3;
+    --accent-color: #ffd6a5;
+    --text-light: #0b1220;
+    --text-dark: #333333;
+    /* Ajustes para el sidebar y toggles en modo claro */
+    --sidebar-bg: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
+    --sidebar-text: var(--text-light);
+    --sidebar-border: rgba(0,0,0,0.06);
+    --toggle-bg: rgba(0,0,0,0.04);
+    --hero-overlay: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.18));
+    --soft-bg: #fff7fb;
+    --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    --hover-shadow: 0 15px 30px rgba(231, 76, 60, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    perspective: 1000px; 
+}
+
+body {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-light);
+    background: var(--soft-bg);
+    background-color: var(--bg);
+    overflow-x: hidden;
+    transition: background-color .28s ease, color .28s ease;
+}
+
+h1, h2, h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+.section-description {
+    color: var(--text-dark) !important; 
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 900;
+    position: relative;
+}
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 6px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    margin: 10px auto 0;
+    border-radius: 6px;
+}
+
+section {
+    padding: 6rem 5%;
+    overflow: hidden;
+    position: relative;
+}
+
+.pattern-bg {
+    background-color: transparent;
+    background-image: radial-gradient(rgba(255,255,255,0.02) 0.5px, transparent 0.5px);
+    background-size: 18px 18px;
+    background-blend-mode: overlay;
+}
+
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Navegación (mejora visual del nav / sidebar) --- */
+/* Botón hamburguesa */
+#menu-toggle {
+    position: fixed;
+    left: 18px;
+    top: 18px;
+    z-index: 1200;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    border: none;
+    background: var(--toggle-bg);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    cursor: pointer;
+}
+#menu-toggle:focus { outline: 2px solid rgba(0,180,216,0.25); }
+
+/* Botón alternar tema */
+#theme-toggle {
+    position: fixed;
+    right: 18px;
+    top: 18px;
+    z-index: 1200;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    border: none;
+    background: var(--toggle-bg);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Backdrop cuando el sidebar está abierto */
+#backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 200ms ease, visibility 200ms ease;
+    z-index: 1100;
+}
+#backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Sidebar (oculto por defecto) */
+#sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 280px;
+    transform: translateX(-110%);
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    box-shadow: 6px 0 30px rgba(0,0,0,0.6);
+    z-index: 1150;
+    padding: 1.2rem 1rem;
+    transition: transform 300ms cubic-bezier(.2,.9,.2,1);
+    border-right: 1px solid var(--sidebar-border);
+}
+#sidebar.active { transform: translateX(0); }
+
+#sidebar #close-btn {
+    background: transparent; border: none; color: var(--sidebar-text); font-size: 1.6rem;
+    float: right; cursor: pointer; padding: 6px 8px; margin-bottom: 6px;
+}
+
+#sidebar ul { list-style: none; margin-top: 1.2rem; padding: 0; }
+#sidebar ul li { margin: 0.4rem 0; }
+#sidebar ul li a {
+    color: var(--sidebar-text); text-decoration: none; display: block; padding: 10px 8px; border-radius: 6px;
+}
+#sidebar ul li a:hover, #sidebar ul li a:focus {
+    background: rgba(0,180,216,0.06); color: var(--secondary-color);
+}
+
+/* Ajustes para mobile: hacer sidebar más estrecho */
+@media (max-width: 480px) {
+    #sidebar { width: 85%; }
+}
+
+/* --- 1. Hero Section (Parallax) --- */
+#hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-light);
+    /* Fondo alternativo sin imagen: uso de un degradado sutil dependiente del tema */
+    background: linear-gradient(180deg, rgba(11,18,32,1) 0%, rgba(7,16,26,0.95) 40%, rgba(6,10,14,0.9) 100%);
+    position: relative;
+}
+
+/* Overlay para asegurar contraste sobre la imagen del hero */
+#hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1; /* Debe quedar encima de la imagen y debajo del contenido */
+    background: var(--hero-overlay);
+    pointer-events: none;
+}
+
+#hero .hero-content { z-index: 2; }
+
+.hero-title {
+    font-size: clamp(3.5rem, 10vw, 6.5rem); 
+    color: var(--text-light);
+    font-weight: 900;
+    text-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+
+/* SVG decorativo en hero */
+.hero-decor { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;}
+.hero-brain { opacity: 0.12; color: var(--primary-color); width: min(48rem, 70%); transform: translateY(-5%); filter: drop-shadow(0 18px 40px rgba(0,0,0,0.6)); animation: slowFloat 6s ease-in-out infinite;}
+@keyframes slowFloat { 0% { transform: translateY(-4%) rotate(-2deg);} 50% { transform: translateY(2%) rotate(2deg);} 100% { transform: translateY(-4%) rotate(-2deg);} }
+.hero-content { position: relative; z-index: 2; }
+.hero-content::after { content: '🐾'; position: absolute; right: 8px; bottom: -8px; font-size: 2.2rem; opacity: 0.18; transform: rotate(-10deg); }
+
+/* --- 2. Anatomía Clave (Tabla) --- */
+.anatomia-table { width: 100%; margin-top: 2rem; border-collapse: collapse; text-align: left; box-shadow: var(--shadow); border-radius: 8px; overflow: hidden; }
+.anatomia-table th, .anatomia-table td { padding: 15px; border: none; color: var(--text-dark); }
+.anatomia-table th { background-color: var(--primary-color); color: var(--text-light); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-bottom: 3px solid var(--secondary-color); }
+.anatomia-table tr:nth-child(even) td { background-color: rgba(255,255,255,0.02); }
+.anatomia-table tr:hover td { background-color: rgba(0,180,216,0.06); }
+
+
+/* --- 3. Ejes Cerebrales (Cards Interactivas 3D y SVG corregido) --- */
+.ejes-container { display: flex; flex-wrap: wrap; align-items: center; gap: 3rem; }
+.ejes-svg { 
+    flex: 1; min-width: 300px; text-align: center; padding: 2rem; 
+    background: var(--card-bg); border-radius: 12px; box-shadow: var(--shadow); 
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Contenedor del diagrama */
+.diagram-wrapper { 
+    display: block; 
+    position: relative; 
+    width: 100%; 
+    max-width: 500px; 
+    margin: 0 auto; 
+    padding: 1rem;
+    aspect-ratio: 1 / 1; 
+}
+
+/* El SVG de fondo (cerebro) */
+.ejes-brain-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2; /* Opacidad más baja para un look de contorno sutil */
+    color: var(--text-dark); 
+    transition: transform 0.3s ease;
+    fill: currentColor; 
+}
+
+/* El SVG de overlay (áreas interactivas) */
+.diagram-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; 
+}
+
+/* Estilos de las regiones interactivas (look interno) */
+.region {
+    fill: transparent; 
+    stroke: var(--primary-color);
+    stroke-width: 0.5; /* Trazo fino para look interno */
+    cursor: pointer;
+    /* Mantener sin animaciones por ahora */
+    opacity: 0.4; /* Sutil por defecto */
+}
+
+.region:hover, .region.active {
+    fill: var(--primary-color);
+    fill-opacity: 0.15;
+    opacity: 1;
+    stroke-width: 1.5;
+    stroke: var(--secondary-color);
+}
+
+/* Se eliminaron las animaciones de pulsación del cerebelo. Las regiones ya no tienen animación.
+   También se borró el overlay de esferas en el HTML según solicitud. */
+
+.ejes-cards {
+    flex: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem; min-width: 300px;
+}
+.single-card-wrapper { grid-template-columns: 1fr; max-width: 800px; margin: 0 auto; }
+
+.card { 
+    background: var(--card-bg); padding: 2rem; border-radius: 12px;
+    box-shadow: var(--shadow); transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer; will-change: transform, box-shadow; 
+    color: var(--text-dark); 
+}
+.card-3d {
+    transform-style: preserve-3d;
+}
+.card-3d:hover {
+    transform: translateY(-8px) rotateX(2deg) rotateY(-2deg) scale(1.02);
+    box-shadow: var(--hover-shadow);
+}
+.card h3 {
+    color: var(--secondary-color); margin-bottom: 0.5rem; font-size: 1.3rem;
+    border-bottom: 2px solid var(--accent-color); padding-bottom: 8px;
+}
+.card h3 i {
+    color: var(--accent-color); margin-right: 0.5rem;
+}
+.card p {
+    font-size: 0.95rem;
+}
+
+/* --- 4 & 5. Conductas y Sentidos --- */
+.conductas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.conducta-card {
+    background: var(--card-bg); border-radius: 12px; overflow: hidden;
+    box-shadow: var(--shadow); transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.conducta-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+.conducta-card img {
+    width: 100%;
+    height: 280px; /* imagen más alta para 'entrar más' */
+    object-fit: cover; /* cubrir el contenedor */
+    display: block;
+    padding: 0; /* eliminar padding para que la imagen ocupe todo el área */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    transition: transform 420ms cubic-bezier(.2,.9,.2,1), filter 320ms ease;
+    will-change: transform, filter;
+    cursor: pointer;
+}
+.conducta-card:hover img,
+.conducta-card:focus-within img {
+    transform: scale(1.06) translateZ(0);
+    filter: brightness(0.98) saturate(1.05);
+}
+
+/* Slight image elevation when the entire card is hovered */
+.conducta-card:hover {
+    transform: translateY(-6px);
+}
+.conducta-info {
+    padding: 1.5rem;
+    color: var(--text-dark);
+}
+.conducta-info h3 {
+    color: var(--primary-color); font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.conducta-info p {
+    font-size: 0.9rem;
+}
+ 
+.alert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.alert-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+    color: var(--text-dark);
+}
+.alert-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--hover-shadow);
+}
+.alert-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+}
+.alert-card i {
+    color: var(--accent-color);
+}
+.alert-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+.alert-list strong {
+    color: var(--secondary-color);
+}
+
+.case-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255,255,255,0.04);
+}
+.case-summary {
+    flex: 2;
+    min-width: 280px;
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+.case-data {
+    flex: 1;
+    min-width: 240px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: var(--text-dark);
+}
+.case-data h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+.case-data ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+}
+.case-data li strong {
+    color: var(--primary-color);
+}
+.case-data p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.case-wrapper p {
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .case-wrapper {
+        flex-direction: column;
+    }
+}
+
+/* --- 7. Conclusión (Diseño Impactante) --- */
+#sabias-que {
+    background-color: var(--primary-color); color: var(--text-light);
+    padding: 10rem 5%; position: relative; text-align: center;
+}
+#sabias-que h2 {
+    color: var(--text-light); margin-bottom: 4rem; position: relative;
+    border: none;
+}
+#sabias-que h2::after {
+    background-color: var(--accent-color);
+}
+blockquote {
+    font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 300;
+    color: var(--text-light); border: none; padding: 0; margin: 3rem auto;
+    max-width: 1000px; line-height: 1.5; position: relative;
+    font-style: italic;
+}
+blockquote::before, blockquote::after {
+    font-family: 'Inter', sans-serif; color: var(--accent-color); font-size: 6rem;
+    position: absolute; line-height: 0; font-weight: 900;
+    top: 50%; transform: translateY(-50%); opacity: 0.7;
+}
+blockquote::before { content: "“"; left: -40px; }
+blockquote::after { content: "”"; right: -40px; }
+
+/* --- Footer --- */
+footer {
+    text-align: center; padding: 2.5rem; background: #06080a;
+    color: var(--text-light); margin-top: 0; font-size: 0.9rem;
+}
+footer p {
+    margin: 0.5rem 0;
+}
+
+/* --- Responsividad --- */
+@media (max-width: 992px) {
+    .ejes-container {
+        flex-direction: column;
+    }
+}
+@media (max-width: 768px) {
+    h2 { font-size: 2.2rem; }
+    .ejes-cards { grid-template-columns: 1fr; }
+    .conductas-grid { grid-template-columns: 1fr; }
+    blockquote::before { left: 0; }
+    blockquote::after { right: 0; }
+    /* Estilos de tabla para movil */
+    .anatomia-table, .anatomia-table thead, .anatomia-table tbody, .anatomia-table th, .anatomia-table td, .anatomia-table tr {
+        display: block;
+    }
+    .anatomia-table thead tr {
+        position: absolute; top: -9999px; left: -9999px;
+    }
+    .anatomia-table tr { border: 1px solid #0000000d; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; }
+    .anatomia-table td {
+        border: none; border-bottom: 1px solid #0000000d; position: relative; padding-left: 50%; text-align: right;
+        background: var(--card-bg);
+    }
+    .anatomia-table td:before {
+        content: attr(data-label); position: absolute; left: 0; width: 50%; padding-left: 15px;
+        white-space: nowrap; font-weight: bold; text-align: left; color: var(--primary-color);
+    }
+    /* Añadir labels a las celdas en HTML si no existen, o usar la lógica JS (no disponible). */
+    .anatomia-table tr td:nth-of-type(1):before { content: "Característica"; }
+    .anatomia-table tr td:nth-of-type(2):before { content: "Cerebro Canino"; }
+    .anatomia-table tr td:nth-of-type(3):before { content: "Cerebro Humano"; }
+}
+
+@media (max-width: 520px) {
+    .conducta-card img { height: 200px; }
+}
+
+/* --------------------------------------------------
+   Integrantes / Team section (animada e interactiva)
+   -------------------------------------------------- */
+.team-section { padding-top: 2rem; padding-bottom: 3rem; }
+.team-section .section-content { max-width: 1100px; }
+.team-section h2 { margin-bottom: 0.6rem; }
+.team-section .section-description { text-align: center; margin-bottom: 1.8rem; color: var(--text-dark); }
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    align-items: start;
+}
+.team-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    border-radius: 14px;
+    padding: 1.25rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+.team-card:focus { box-shadow: 0 12px 30px rgba(0,0,0,0.18); transform: translateY(-6px) scale(1.01); }
+.team-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--hover-shadow); }
+.team-card .avatar {
+    width: 88px; height: 88px; border-radius: 50%; margin: 0 auto 0.8rem; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; color: var(--text-light); background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); box-shadow: 0 8px 18px rgba(0,0,0,0.28);
+    font-size: 1.05rem;
+}
+.team-card h3 { margin-top: 0.6rem; margin-bottom: 0.2rem; color: var(--primary-color); font-size: 1.05rem; }
+.team-card .role { color: var(--text-dark); font-size: 0.9rem; margin-bottom: 0.8rem; }
+.team-card .bio { font-size: 0.88rem; color: var(--text-dark); opacity: 0; max-height: 0; overflow: hidden; transition: opacity 220ms ease, max-height 320ms ease, transform 220ms ease; transform-origin: top center; }
+.team-card.expanded { background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(255,255,255,0.01)); }
+.team-card.expanded .bio { opacity: 1; max-height: 180px; margin-top: 0.6rem; transform: translateY(0); }
+
+/* Small tilt transform that will be driven by JS on pointer move */
+.team-card .tilt { transition: transform 180ms ease; }
+
+/* Responsibilities chips */
+.responsibilities { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 8px; }
+.responsibilities li { list-style: none; background: rgba(255,255,255,0.03); color: var(--text-dark); padding: 6px 10px; border-radius: 999px; font-size: 0.8rem; }
+.team-card .responsibilities li { box-shadow: 0 4px 10px rgba(0,0,0,0.06); }
+
+/* Entrance animation (simple pop) */
+@keyframes popIn {
+    0% { transform: translateY(14px) scale(.98); opacity: 0; }
+    60% { transform: translateY(-6px) scale(1.01); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+.team-card.is-visible { animation: popIn 480ms cubic-bezier(.2,.9,.2,1) both; }
+
+@media (max-width: 520px) {
+    .team-grid { grid-template-columns: 1fr; }
+    .team-card { padding: 1rem; }
+    .team-card .avatar { width: 72px; height: 72px; font-size: 0.95rem; }
+}

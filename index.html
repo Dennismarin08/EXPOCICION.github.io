@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rugalvet - Neurociencia Canina Aplicada</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <button id="menu-toggle" aria-label="Abrir menú" class="animate-entrance">
+        <i class="fas fa-bars"></i>
+    </button>
+    <button id="theme-toggle" aria-label="Alternar tema" class="theme-btn" title="Alternar tema">🌙</button>
+
+    <nav id="sidebar">
+        <button id="close-btn" aria-label="Cerrar menú">&times;</button>
+        <ul>
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#anatomia">Anatomía Comparada</a></li>
+            <li><a href="#ejes">Ejes Integradores</a></li>
+            <li><a href="#conductas">Neuroconducta</a></li>
+            <li><a href="#sentidos">Percepción Sensorial</a></li>
+            <li><a href="#interaccion">Interacción Ejes</a></li>
+            <!-- Conclusión removida por solicitud -->
+        </ul>
+    </nav>
+    
+    <div id="backdrop"></div>
+
+    <header id="hero" class="parallax-section">
+        <div class="hero-decor" aria-hidden="true">
+            <svg class="hero-brain" version="1.0" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet">
+                <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" stroke="none">
+                    <path d="M1506 2458 c-9 -12 -16 -17 -16 -11 0 6 -14 14 -30 18 -42 9 -181 -5 -174 -17 4 -6 -2 -8 -15 -3 -15 4 -23 1 -27 -10 -5 -11 -10 -13 -19 -5 -18 15 -102 4 -195 -25 -41 -13 -101 -30 -132 -39 -31 -9 -70 -29 -86 -44 -16 -15 -40 -28 -53 -30 -31 -3 -85 -37 -82 -51 2 -6 0 -10 -5 -9 -16 5 -51 -23 -54 -44 -2 -16 -9 -22 -23 -21 -35 3 -73 -26 -154 -118 -60 -68 -81 -99 -81 -119 0 -18 -11 -39 -28 -57 -32 -32 -77 -152 -68 -181 4 -10 -1 -36 -10 -57 -19 -47 -24 -189 -6 -206 6 -7 12 -25 12 -40 0 -55 44 -139 73 -139 6 0 1 10 -10 22 -35 39 -38 54 -4 24 19 -19 29 -36 26 -46 -7 -23 16 -41 124 -95 87 -45 98 -48 175 -49 77 0 223 16 257 29 14 5 16 -1 12 -42 -4 -42 0 -55 28 -98 18 -27 40 -54 48 -59 8 -5 24 -19 35 -31 12 -12 47 -37 79 -55 57 -32 57 -32 159 -25 96 6 106 9 170 47 68 40 81 60 33 51 -14 -3 -22 -10 -18 -16 4 -6 0 -8 -9 -5 -8 4 -20 -2 -27 -14 -7 -12 -18 -17 -30 -13 -10 3 -24 -1 -31 -10 -20 -25 -28 -17 -20 19 11 52 49 94 110 124 46 23 66 27 123 25 38 -2 77 2 87 7 21 11 78 18 210 24 52 3 103 8 112 11 20 8 61 -12 53 -25 -8 -13 -59 -25 -200 -50 -124 -21 -200 -40 -272 -67 -37 -14 -43 -20 -43 -45 0 -65 65 -136 144 -158 l48 -13 63 -131 c35 -72 66 -139 70 -150 4 -15 12 -17 45 -12 21 3 50 10 65 16 30 11 29 21 -16 140 -16 41 -29 79 -29 83 1 4 -21 23 -47 41 -26 18 -64 54 -83 79 -40 53 -76 140 -60 145 5 2 10 8 10 13 0 14 -80 -29 -87 -47 -3 -8 -1 -26 5 -39 9 -20 9 -23 -3 -18 -14 5 -19 17 -16 36 2 10 -37 9 -44 -2 -3 -5 -1 -12 5 -16 6 -4 8 -11 5 -16 -3 -5 0 -6 8 -3 8 3 18 1 22 -5 7 -12 55 -15 55 -4 0 3 -8 15 -17 25 -13 15 -15 23 -6 36 14 22 39 22 35 0 -2 -10 1 -18 6 -18 8 0 13 -11 27 -62 2 -5 3 -12 4 -17 0 -5 11 -11 22 -14 15 -4 20 -11 16 -21 -4 -10 -1 -16 7 -16 18 0 77 -55 68 -65 -4 -4 -2 -5 5 -1 7 4 19 -4 29 -19 13 -20 14 -28 4 -40 -11 -13 -10 -14 6 -8 17 6 17 5 5 -10 -17 -21 -7 -51 15 -43 14 5 15 4 4 -9 -7 -8 -10 -20 -7 -27 2 -7 4 -15 4 -18 0 -3 5 -15 11 -27 16 -29 -5 -43 -26 -17 -13 17 -14 17 -8 1 3 -11 2 -16 -4 -12 -6 3 -10 15 -10 26 0 10 -4 19 -10 19 -5 0 -6 7 -3 17 4 9 2 14 -4 10 -12 -8 -56 80 -47 95 4 7 2 8 -4 4 -11 -6 -16 6 -13 27 0 4 -3 7 -9 7 -5 0 -10 6 -10 13 0 29 -93 108 -108 92 -3 -3 -19 7 -35 22 -17 16 -27 22 -23 16 4 -7 2 -13 -3 -13 -6 0 -11 5 -11 10 0 6 -11 20 -24 31 -15 13 -22 27 -19 37 4 10 2 13 -5 8 -17 -10 -15 16 3 40 8 10 15 15 15 11 0 -4 10 -2 22 4 30 16 159 49 153 39 -9 -14 109 -180 120 -169 3 4 -12 28 -34 53 -46 53 -64 82 -59 97 2 6 18 -11 35 -38 40 -60 151 -183 166 -183 6 0 -9 21 -34 48 -80 85 -166 198 -156 208 2 2 27 -26 55 -63 110 -147 198 -218 301 -244 23 -5 41 -12 39 -15 -9 -9 -133 28 -161 47 -19 14 -32 17 -44 11 -14 -8 -9 -13 26 -32 24 -12 62 -25 84 -30 l42 -9 -46 3 c-26 2 -60 10 -78 19 -32 16 -61 17 -62 1 -1 -14 119 -43 179 -44 29 0 78 9 109 20 32 11 67 20 79 20 27 0 127 65 180 117 49 48 98 131 115 194 18 66 11 75 -47 70 -44 -4 -46 -5 -21 -12 16 -4 36 -5 45 -2 13 4 14 3 3 -5 -11 -8 -11 -10 0 -15 8 -4 -2 -4 -21 -2 -84 10 -184 13 -160 5 14 -4 54 -9 90 -9 36 -1 72 -6 80 -11 10 -7 -1 -9 -37 -4 -37 5 -58 3 -68 -6 -13 -11 -32 -11 -103 0 -86 12 -191 38 -162 39 8 1 64 -8 123 -20 60 -11 116 -19 125 -17 10 2 -36 14 -101 27 -82 16 -130 20 -160 15 l-42 -7 60 -19 c74 -22 225 -47 302 -50 45 -1 36 -3 -37 -8 l-95 -6 85 -2 c99 -3 147 -21 60 -23 -72 -2 -86 0 -145 13 -44 10 -47 12 -25 19 l25 7 -26 1 c-14 1 -63 13 -110 27 -46 14 -115 29 -154 33 l-70 8 65 3 c64 3 65 3 20 10 -34 5 -20 7 60 8 58 1 123 -2 145 -7 22 -5 60 -5 85 -1 l45 7 -56 2 c-72 1 -149 12 -149 20 0 6 129 -1 220 -13 25 -3 11 1 -30 9 -41 8 -93 19 -115 24 -36 8 -37 9 -10 10 17 0 46 -3 65 -8 20 -4 68 -4 108 1 57 8 76 7 89 -4 14 -11 12 -14 -23 -19 l-39 -6 45 -2 c38 -1 51 4 85 34 87 77 105 98 111 123 3 15 14 43 24 62 27 53 33 120 16 171 -9 24 -16 73 -16 109 0 76 -25 140 -64 165 -20 13 -26 26 -26 52 0 47 -26 99 -71 143 -20 19 -39 46 -44 58 -4 13 -29 48 -56 78 -27 30 -49 58 -49 63 0 12 -99 111 -111 111 -5 0 -37 22 -72 49 -101 79 -189 132 -217 130 -14 -1 -42 6 -63 15 -47 21 -143 39 -168 33 -11 -3 -22 -1 -25 5 -3 5 -17 7 -31 3 -14 -3 -22 -2 -19 3 6 10 -85 22 -160 22 -33 0 -46 -5 -58 -22z m99 3 c-16 -4 -40 -13 -53 -20 -22 -12 -42 -8 -42 9 0 12 26 18 80 18 39 0 41 -1 15 -7z m131 -27 c29 -8 64 -24 76 -35 21 -17 22 -20 6 -29 -36 -22 -49 -43 -43 -67 5 -21 3 -23 -14 -14 -55 30 -68 75 -26 91 14 5 25 11 25 12 0 2 -27 3 -60 3 l-60 0 24 -18 c14 -10 27 -30 31 -46 4 -19 17 -33 40 -44 38 -18 46 -46 19 -68 -21 -17 -50 -23 -104 -21 -25 2 -69 3 -98 5 l-52 2 0 37 c0 33 4 38 40 54 22 10 40 21 40 25 0 4 -11 17 -25 30 -39 38 -30 62 31 84 51 18 85 18 150 -1z m-245 -21 c13 -14 18 -23 12 -19 -20 11 -15 -4 12 -36 24 -28 25 -32 10 -48 -13 -14 -23 -16 -50 -10 -20 5 -33 4 -29 -1 3 -5 12 -9 20 -9 10 0 14 -12 14 -39 0 -22 3 -46 6 -55 10 -26 -25 -32 -42 -7 -8 11 -22 21 -31 21 -15 0 -15 -1 -2 -12 9 -7 23 -25 31 -39 15 -23 15 -29 2 -55 -9 -16 -29 -43 -45 -60 -21 -22 -36 -53 -48 -100 l-17 -69 -50 -6 c-27 -4 -57 -10 -66 -14 -15 -6 -18 -1 -18 29 0 19 8 51 17 70 14 30 14 42 5 75 -7 21 -9 46 -6 54 6 16 43 43 108 79 17 10 27 18 21 19 -5 1 1 5 15 9 21 7 22 8 5 9 -11 0 -36 -9 -55 -21 -40 -25 -60 -30 -60 -17 0 19 35 62 65 80 22 14 25 19 12 19 -28 0 -10 20 36 40 22 10 42 26 43 35 2 14 -1 13 -18 -4 -41 -45 -77 -3 -39 45 26 33 28 53 3 31 -10 -10 -29 -17 -43 -17 -20 -1 -21 -2 -8 -10 13 -7 15 -19 9 -55 -4 -26 -14 -54 -23 -63 -16 -15 -19 -14 -52 18 -20 19 -38 45 -42 57 -7 31 20 69 54 76 15 3 44 10 63 15 19 6 62 10 96 11 53 1 63 -2 85 -26z m412 10 c40 -6 51 -23 15 -23 -13 0 -32 -2 -43 -5 -12 -3 -31 5 -50 21 l-30 26 35 -6 c19 -4 52 -9 73 -13z m-705 -10 c-2 -5 -10 -20 -17 -35 l-13 -26 -55 19 c-40 14 -52 15 -44 5 9 -11 0 -20 -45 -45 -39 -22 -59 -29 -68 -22 -13 11 -34 10 -53 -2 -8 -5 -13 -3 -13 5 0 11 -2 11 -8 0 -5 -7 -26 -15 -48 -18 l-39 -6 45 31 c25 17 70 36 100 42 30 6 74 18 96 26 23 8 66 18 95 23 30 4 58 8 62 9 5 0 7 -2 5 -6z m842 -58 c49 -24 62 -48 33 -59 -13 -5 -26 2 -45 24 -16 16 -28 26 -28 21 0 -6 -12 -6 -30 -1 -44 12 -37 4 15 -19 39 -17 45 -24 45 -50 0 -28 -8 -36 -32 -32 -3 0 -3 -13 2 -29 6 -21 5 -30 -3 -30 -7 0 -2 -8 9 -18 49 -39 49 -74 -1 -106 l-25 -16 -11 45 c-6 25 -15 45 -19 45 -13 0 -29 48 -23 71 5 18 3 21 -11 16 -10 -4 -19 -7 -20 -7 -12 0 12 -69 30 -89 30 -33 32 -81 3 -107 -12 -10 -28 -32 -36 -47 -10 -21 -20 -28 -34 -24 -21 6 -47 -30 -7..."/>
+                    <path d="M2448 1549 c-22 -12 -24 -33 -3 -25 11 4 15 -1 15 -17 0 -18 2 -19 10 -7 11 18 13 60 3 60 -5 0 -16 -5 -25 -11z"/>
+                    <path d="M2504 1391 c32 -33 46 -55 46 -74 0 -18 4 -26 11 -21 6 3 8 16 5 29 -4 17 0 25 20 34 15 6 24 14 21 17 -3 3 -14 1 -26 -5 -24 -13 -37 2 -16 19 8 7 15 18 15 24 0 6 -7 3 -14 -6 -18 -24 -42 -23 -60..."/>
+                </g>
+            </svg>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">Rugalvet</h1>
+            <p class="hero-subtitle">Una exploración profesional de la neurociencia, conducta y sistema nervioso canino.</p>
+        </div>
+    </header>
+
+    <!-- Integrantes: sección colocada justo debajo del hero para visibilidad (animada/interactiva) -->
+    <section id="integrantes" class="team-section animate-on-scroll">
+        <div class="section-content">
+            <h2>Integrantes</h2>
+            <p class="section-description">Conoce al equipo que desarrolló este proyecto. Pasa el cursor o toca las tarjetas para ver más información.</p>
+
+            <div class="team-grid">
+                <div class="team-card animate-on-scroll" data-delay="0" tabindex="0" data-name="Valery Sanchez" data-role="Investigación · Diseño web" data-bio="Lidera la investigación científica y el diseño web del proyecto. Se encargó del diseño de la interfaz y la coordinación metodológica.">
+                    <div class="avatar">VS</div>
+                    <h3>Valery Sanchez</h3>
+                    <p class="role">Investigación · Diseño web</p>
+                    <ul class="responsibilities">
+                        <li>Investigación</li>
+                        <li>Diseño web</li>
+                        <li>Coordinación metodológica</li>
+                    </ul>
+                    <div class="bio">Lidera la investigación científica y el diseño web del proyecto. Se encargó del diseño de la interfaz y la coordinación metodológica.</div>
+                </div>
+
+                <div class="team-card animate-on-scroll" data-delay="100" tabindex="0" data-name="Gabriela Marmolejo" data-role="Creadora de diapositivas" data-bio="Diseñó las presentaciones y materiales visuales para difusión. Encargada de la narrativa visual en presentaciones.">
+                    <div class="avatar">GM</div>
+                    <h3>Gabriela Marmolejo</h3>
+                    <p class="role">Creadora de diapositivas</p>
+                    <ul class="responsibilities">
+                        <li>Diseño de diapositivas</li>
+                        <li>Materiales visuales</li>
+                        <li>Narrativa visual</li>
+                    </ul>
+                    <div class="bio">Diseñó las presentaciones y materiales visuales para difusión. Encargada de la narrativa visual en presentaciones.</div>
+                </div>
+
+                <div class="team-card animate-on-scroll" data-delay="200" tabindex="0" data-name="Jessica Ramírez" data-role="Diseño" data-bio="Responsable del diseño gráfico y de experiencia: iconografía, paleta y microinteracciones. Implementó accesibilidad visual.">
+                    <div class="avatar">JR</div>
+                    <h3>Jessica Ramírez</h3>
+                    <p class="role">Diseño</p>
+                    <ul class="responsibilities">
+                        <li>Diseño gráfico</li>
+                        <li>Microinteracciones</li>
+                        <li>Accesibilidad visual</li>
+                    </ul>
+                    <div class="bio">Responsable del diseño gráfico y de experiencia: iconografía, paleta y microinteracciones. Implementó accesibilidad visual.</div>
+                </div>
+
+                <div class="team-card animate-on-scroll" data-delay="300" tabindex="0" data-name="Valentina Moncayo" data-role="Maqueta" data-bio="Encargada de la maqueta y prototipado. Gestionó la integración de contenidos y las pruebas de usabilidad.">
+                    <div class="avatar">VM</div>
+                    <h3>Valentina Moncayo</h3>
+                    <p class="role">Maqueta</p>
+                    <ul class="responsibilities">
+                        <li>Maquetación</li>
+                        <li>Prototipado</li>
+                        <li>Pruebas de usabilidad</li>
+                    </ul>
+                    <div class="bio">Encargada de la maqueta y prototipado. Gestionó la integración de contenidos y las pruebas de usabilidad.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+
+        <section id="anatomia">
+            <div class="section-content animate-on-scroll">
+                <h2>Anatomía Clave: El Cerebro Canino</h2>
+                <p class="section-description">Las diferencias entre la neurología canina y humana radican principalmente en la distribución de la corteza y el desarrollo de los centros sensoriales clave.</p>
+                
+                <table class="anatomia-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Cerebro Canino</th>
+                            <th>Cerebro Humano</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Característica">Énfasis Sensorial</td>
+                            <td data-label="Cerebro Canino">Olfato Dominante (1/3 de la corteza).</td>
+                            <td data-label="Cerebro Humano">Visión Dominante (Mayor parte del lóbulo occipital).</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Característica">Lóbulos Olfatorios</td>
+                            <td data-label="Cerebro Canino">Grandes y prominentes (40 veces más grandes).</td>
+                            <td data-label="Cerebro Humano">Relativamente pequeños.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Característica">Lóbulos Prefrontales</td>
+                            <td data-label="Cerebro Canino">Menor desarrollo relativo, enfocado en aprendizaje contextual.</td>
+                            <td data-label="Cerebro Humano">Mayor desarrollo (planificación, razonamiento abstracto).</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Característica">Cerebelo (Coordinación)</td>
+                            <td data-label="Cerebro Canino">Muy desarrollado (optimizado para agilidad y velocidad).</td>
+                            <td data-label="Cerebro Humano">Desarrollado, pero menor proporción cortical.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Característica">Visión de Color</td>
+                            <td data-label="Cerebro Canino">Dicromática (azul y amarillo, ceguera al rojo/verde).</td>
+                            <td data-label="Cerebro Humano">Tricromática (azul, verde y rojo).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section id="ejes">
+            <div class="section-content animate-on-scroll">
+                <h2>Ejes Cerebrales Principales</h2>
+                <p class="section-description">Este diagrama muestra las principales regiones del cerebro canino. A la derecha verás las descripciones y funciones clave de cada región.</p>
+                <div class="ejes-container">
+                    
+                    <div class="ejes-svg">
+                        <div class="diagram-wrapper">
+                            <svg class="ejes-brain-svg" version="1.0" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet">
+                                <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                                    <path d="M1506 2458 c-9 -12 -16 -17 -16 -11 0 6 -14 14 -30 18 -42 9 -181 -5 -174 -17 4 -6 -2 -8 -15 -3 -15 4 -23 1 -27 -10 -5 -11 -10 -13 -19 -5 -18 15 -102 4 -195 -25 -41 -13 -101 -30 -132 -39 -31 -9 -70 -29 -86 -44 -16 -15 -40 -28 -53 -30 -31 -3 -85 -37 -82 -51 2 -6 0 -10 -5 -9 -16 5 -51 -23 -54 -44 -2 -16 -9 -22 -23 -21 -35 3 -73 -26 -154 -118 -60 -68 -81 -99 -81 -119 0 -18 -11 -39 -28 -57 -32 -32 -77 -152 -68 -181 4 -10 -1 -36 -10 -57 -19 -47 -24 -189 -6 -206 6 -7 12 -25 12 -40 0 -55 44 -139 73 -139 6 0 1 10 -10 22 -35 39 -38 54 -4 24 19 -19 29 -36 26 -46 -7 -23 16 -41 124 -95 87 -45 98 -48 175 -49 77 0 223 16 257 29 14 5 16 -1 12 -42 -4 -42 0 -55 28 -98 18 -27 40 -54 48 -59 8 -5 24 -19 35 -31 12 -12 47 -37 79 -55 57 -32 57 -32 159 -25 96 6 106 9 170 47 68 40 81 60 33 51 -14 -3 -22 -10 -18 -16 4 -6 0 -8 -9 -5 -8 4 -20 -2 -27 -14 -7 -12 -18 -17 -30 -13 -10 3 -24 -1 -31 -10 -20 -25 -28 -17 -20 19 11 52 49 94 110 124 46 23 66 27 123 25 38 -2 77 2 87 7 21 11 78 18 210 24 52 3 103 8 112 11 20 8 61 -12 53 -25 -8 -13 -59 -25 -200 -50 -124 -21 -200 -40 -272 -67 -37 -14 -43 -20 -43 -45 0 -65 65 -136 144 -158 l48 -13 63 -131 c35 -72 66 -139 70 -150 4 -15 12 -17 45 -12 21 3 50 10 65 16 30 11 29 21 -16 140 -16 41 -29 79 -29 83 1 4 -21 23 -47 41 -26 18 -64 54 -83 79 -40 53 -76 140 -60 145 5 2 10 8 10 13 0 14 -80 -29 -87 -47 -3 -8 -1 -26 5 -39 9 -20 9 -23 -3 -18 -14 5 -19 17 -16 36 2 10 -37 9 -44 -2 -3 -5 -1 -12 5 -16 6 -4 8 -11 5 -16 -3 -5 0 -6 8 -3 8 3 18 1 22 -5 7 -12 55 -15 55 -4 0 3 -8 15 -17 25 -13 15 -15 23 -6 36 14 22 39 22 35 0 -2 -10 1 -18 6 -18 8 0 13 -11 27 -62 2 -5 3 -12 4 -17 0 -5 11 -11 22 -14 15 -4 20 -11 16 -21 -4 -10 -1 -16 7 -16 18 0 77 -55 68 -65 -4 -4 -2 -5 5 -1 7 4 19 -4 29 -19 13 -20 14 -28 4 -40 -11 -13 -10 -14 6 -8 17 6 17 5 5 -10 -17 -21 -7 -51 15 -43 14 5 15 4 4 -9 -7 -8 -10 -20 -7 -27 2 -7 4 -15 4 -18 0 -3 5 -15 11 -27 16 -29 -5 -43 -26 -17 -13 17 -14 17 -8 1 3 -11 2 -16 -4 -12 -6 3 -10 15 -10 26 0 10 -4 19 -10 19 -5 0 -6 7 -3 17 4 9 2 14 -4 10 -12 -8 -56 80 -47 95 4 7 2 8 -4 4 -11 -6 -16 6 -13 27 0 4 -3 7 -9 7 -5 0 -10 6 -10 13 0 29 -93 108 -108 92 -3 -3 -19 7 -35 22 -17 16 -27 22 -23 16 4 -7 2 -13 -3 -13 -6 0 -11 5 -11 10 0 6 -11 20 -24 31 -15 13 -22 27 -19 37 4 10 2 13 -5 8 -17 -10 -15 16 3 40 8 10 15 15 15 11 0 -4 10 -2 22 4 30 16 159 49 153 39 -9 -14 109 -180 120 -169 3 4 -12 28 -34 53 -46 53 -64 82 -59 97 2 6 18 -11 35 -38 40 -60 151 -183 166 -183 6 0 -9 21 -34 48 -80 85 -166 198 -156 208 2 2 27 -26 55 -63 110 -147 198 -218 301 -244 23 -5 41 -12 39 -15 -9 -9 -133 28 -161 47 -19 14 -32 17 -44 11 -14 -8 -9 -13 26 -32 24 -12 62 -25 84 -30 l42 -9 -46 3 c-26 2 -60 10 -78 19 -32 16 -61 17 -62 1 -1 -14 119 -43 179 -44 29 0 78 9 109 20 32 11 67 20 79 20 27 0 127 65 180 117 49 48 98 131 115 194 18 66 11 75 -47 70 -44 -4 -46 -5 -21 -12 16 -4 36 -5 45 -2 13 4 14 3 3 -5 -11 -8 -11 -10 0 -15 8 -4 -2 -4 -21 -2 -84 10 -184 13 -160 5 14 -4 54 -9 90 -9 36 -1 72 -6 80 -11 10 -7 -1 -9 -37 -4 -37 5 -58 3 -68 -6 -13 -11 -32 -11 -103 0 -86 12 -191 38 -162 39 8 1 64 -8 123 -20 60 -11 116 -19 125 -17 10 2 -36 14 -101 27 -82 16 -130 20 -160 15 l-42 -7 60 -19 c74 -22 225 -47 302 -50 45 -1 36 -3 -37 -8 l-95 -6 85 -2 c99 -3 147 -21 60 -23 -72 -2 -86 0 -145 13 -44 10 -47 12 -25 19 l25 7 -26 1 c-14 1 -63 13 -110 27 -46 14 -115 29 -154 33 l-70 8 65 3 c64 3 65 3 20 10 -34 5 -20 7 60 8 58 1 123 -2 145 -7 22 -5 60 -5 85 -1 l45 7 -56 2 c-72 1 -149 12 -149 20 0 6 129 -1 220 -13 25 -3 11 1 -30 9 -41 8 -93 19 -115 24 -36 8 -37 9 -10 10 17 0 46 -3 65 -8 20 -4 68 -4 108 1 57 8 76 7 89 -4 14 -11 12 -14 -23 -19 l-39 -6 45 -2 c38 -1 51 4 85 34 87 77 105 98 111 123 3 15 14 43 24 62 27 53 33 120 16 171 -9 24 -16 73 -16 109 0 76 -25 140 -64 165 -20 13 -26 26 -26 52 0 47 -26 99 -71 143 -20 19 -39 46 -44 58 -4 13 -29 48 -56 78 -27 30 -49 58 -49 63 0 12 -99 111 -111 111 -5 0 -37 22 -72 49 -101 79 -189 132 -217 130 -14 -1 -42 6 -63 15 -47 21 -143 39 -168 33 -11 -3 -22 -1 -25 5 -3 5 -17 7 -31 3 -14 -3 -22 -2 -19 3 6 10 -85 22 -160 22 -33 0 -46 -5 -58 -22z m99 3 c-16 -4 -40 -13 -53 -20 -22 -12 -42 -8 -42 9 0 12 26 18 80 18 39 0 41 -1 15 -7z m131 -27 c29 -8 64 -24 76 -35 21 -17 22 -20 6 -29 -36 -22 -49 -43 -43 -67 5 -21 3 -23 -14 -14 -55 30 -68 75 -26 91 14 5 25 11 25 12 0 2 -27 3 -60 3 l-60 0 24 -18 c14 -10 27 -30 31 -46 4 -19 17 -33 40 -44 38 -18 46 -46 19 -68 -21 -17 -50 -23 -104 -21 -25 2 -69 3 -98 5 l-52 2 0 37 c0 33 4 38 40 54 22 10 40 21 40 25 0 4 -11 17 -25 30 -39 38 -30 62 31 84 51 18 85 18 150 -1z m-245 -21 c13 -14 18 -23 12 -19 -20 11 -15 -4 12 -36 24 -28 25 -32 10 -48 -13 -14 -23 -16 -50 -10 -20 5 -33 4 -29 -1 3 -5 12 -9 20 -9 10 0 14 -12 14 -39 0 -22 3 -46 6 -55 10 -26 -25 -32 -42 -7 -8 11 -22 21 -31 21 -15 0 -15 -1 -2 -12 9 -7 23 -25 31 -39 15 -23 15 -29 2 -55 -9 -16 -29 -43 -45 -60 -21 -22 -36 -53 -48 -100 l-17 -69 -50 -6 c-27 -4 -57 -10 -66 -14 -15 -6 -18 -1 -18 29 0 19 8 51 17 70 14 30 14 42 5 75 -7 21 -9 46 -6 54 6 16 43 43 108 79 17 10 27 18 21 19 -5 1 1 5 15 9 21 7 22 8 5 9 -11 0 -36 -9 -55 -21 -40 -25 -60 -30 -60 -17 0 19 35 62 65 80 22 14 25 19 12 19 -28 0 -10 20 36 40 22 10 42 26 43 35 2 14 -1 13 -18 -4 -41 -45 -77 -3 -39 45 26 33 28 53 3 31 -10 -10 -29 -17 -43 -17 -20 -1 -21 -2 -8 -10 13 -7 15 -19 9 -55 -4 -26 -14 -54 -23 -63 -16 -15 -19 -14 -52 18 -20 19 -38 45 -42 57 -7 31 20 69 54 76 15 3 44 10 63 15 19 6 62 10 96 11 53 1 63 -2 85 -26z m412 10 c40 -6 51 -23 15 -23 -13 0 -32 -2 -43 -5 -12 -3 -31 5 -50 21 l-30 26 35 -6 c19 -4 52 -9 73 -13z m-705 -10 c-2 -5 -10 -20 -17 -35 l-13 -26 -55 19 c-40 14 -52 15 -44 5 9 -11 0 -20 -45 -45 -39 -22 -59 -29 -68 -22 -13 11 -34 10 -53 -2 -8 -5 -13 -3 -13 5 0 11 -2 11 -8 0 -5 -7 -26 -15 -48 -18 l-39 -6 45 31 c25 17 70 36 100 42 30 6 74 18 96 26 23 8 66 18 95 23 30 4 58 8 62 9 5 0 7 -2 5 -6z m842 -58 c49 -24 62 -48 33 -59 -13 -5 -26 2 -45 24 -16 16 -28 26 -28 21 0 -6 -12 -6 -30 -1 -44 12 -37 4 15 -19 39 -17 45 -24 45 -50 0 -28 -8 -36 -32 -32 -3 0 -3 -13 2 -29 6 -21 5 -30 -3 -30 -7 0 -2 -8 9 -18 49 -39 49 -74 -1 -106 l-25 -16 -11 45 c-6 25 -15 45 -19 45 -13 0 -29 48 -23 71 5 18 3 21 -11 16 -10 -4 -19 -7 -20 -7 -12 0 12 -69 30 -89 30 -33 32 -81 3 -107 -12 -10 -28 -32 -36 -47 -10 -21 -20 -28 -34 -24 -21 6 -47 -30 -7..."/>
+                                    <path d="M2448 1549 c-22 -12 -24 -33 -3 -25 11 4 15 -1 15 -17 0 -18 2 -19 10 -7 11 18 13 60 3 60 -5 0 -16 -5 -25 -11z"/>
+                                    <path d="M2504 1391 c32 -33 46 -55 46 -74 0 -18 4 -26 11 -21 6 3 8 16 5 29 -4 17 0 25 20 34 15 6 24 14 21 17 -3 3 -14 1 -26 -5 -24 -13 -37 2 -16 19 8 7 15 18 15 24 0 6 -7 3 -14 -6 -18 -24 -42 -23 -60..."/>
+                                </g>
+                            </svg>
+                            <!-- Overlay de regiones eliminado por solicitud (esferas removidas) -->
+                            <!-- Si quieres añadir zonas interactivas sin esferas, puedo añadir áreas <path> o <rect> accesibles aquí. -->
+                            </div>
+                    </div>
+                    
+                    <div class="ejes-cards">
+                        <div class="card card-3d" id="card-hipotalamo">
+                            <h3><i class="fas fa-heart-pulse"></i> Hipotálamo</h3>
+                            <p>Centro crítico de la Homeostasis (temperatura, sed, apetito) y Ritmos Circadianos. Controla el eje hipotálamo-hipófisis (liberación de ADH, Oxitocina).</p>
+                        </div>
+                        <div class="card card-3d" id="card-cerebelo">
+                            <h3><i class="fas fa-running"></i> Cerebelo</h3>
+                            <p>Gran coordinador de Movimiento, Equilibrio y Postura. Vital para el Aprendizaje Motor (optimización de patrones como saltos o agilidad).</p>
+                        </div>
+                        <div class="card card-3d" id="card-ganglios-basales">
+                            <h3><i class="fas fa-cogs"></i> Ganglios Basales</h3>
+                            <p>Regulan la Motivación y la Selección de Acciones. Clave en la Formación de Hábitos y Aprendizaje Procedimental (automatización de respuestas).</p>
+                        </div>
+                        <div class="card card-3d" id="card-sistema-limbico">
+                            <h3><i class="fas fa-brain"></i> Sistema Límbico</h3>
+                            <p>Centro de la Emoción (Amígdala) y Memoria Espacial (Hipocampo). Fundamental para el vínculo social y la memoria asociada a estímulos olfativos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conductas" class="pattern-bg">
+            <div class="section-content">
+                <h2 class="animate-on-scroll">Neurociencia de la Conducta</h2>
+                <div class="conductas-grid">
+                    
+                    <div class="conducta-card animate-on-scroll">
+                        <img src="IMG/_8fd9dc4a-32dd-4d84-9188-6e0f3c146990.jpeg" alt="Perro Aprendiendo">
+                        <div class="conducta-info">
+                            <h3>Aprendizaje (Procedimental)</h3>
+                            <p>Los Ganglios Basales (Estriado) utilizan Dopamina para reforzar acciones y convertir comandos repetidos en hábitos automáticos. El Hipotálamo modula la motivación por recompensa.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="conducta-card animate-on-scroll" data-delay="100">
+                        <img src="IMG/_20ea66e8-5151-48dd-9728-52ae0af9d2b2.jpeg" alt="Perro Recordando">
+                        <div class="conducta-info">
+                            <h3>Memoria (Habitual y Emocional)</h3>
+                            <p>Controlada por el Hipocampo (espacial/episódica) y la Amígdala (emocional). El Cerebelo guarda la memoria de patrones motores (Agility).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="conducta-card animate-on-scroll" data-delay="200">
+                        <img src="IMG/_45ec18c6-506b-476d-b8f5-fd11449cb206.jpeg" alt="Perro Durmiendo">
+                        <div class="conducta-info">
+                            <h3>Sueño (NREM y REM)</h3>
+                            <p>Iniciado por el VLPO del Hipotálamo (liberando GABA). Los Ganglios Basales y Cerebelo regulan la disminución de la actividad motora durante la fase de reposo.</p>
+                        </div>
+                    </div>
+
+                    <div class="conducta-card animate-on-scroll" data-delay="300">
+                        <img src="IMG/Lucid_Origin_A_dog_with_its_ears_perked_up_and_eyes_focused_st_2.jpg" alt="Perro Alerta">
+                        <div class="conducta-info">
+                            <h3>Vigilia (Alerta y Reacción)</h3>
+                            <p>Mantenida por neuronas de Orexina/Hipocretina del Hipotálamo. La Dopamina de la Sustancia Negra (Ganglios Basales) activa la motivación y la iniciativa motora.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="conducta-card animate-on-scroll" data-delay="400">
+                        <img src="IMG/_f09b8382-439e-418a-b995-e9ed64c48c50.jpeg" alt="Aprendizaje Social">
+                        <div class="conducta-info">
+                            <h3>Aprendizaje Social</h3>
+                            <p>Los perros aprenden observando a otros sujetos: la imitación y la facilitación social son vías importantes para la adquisición de conductas complejas. Recorrido: Corteza prefrontal → Amígdala → Núcleo accumbens → Ganglios basales.</p>
+                        </div>
+                    </div>
+
+                    <div class="conducta-card animate-on-scroll" data-delay="500">
+                        <img src="IMG/_e8a69865-b1b7-4b57-815c-70a5c9bfdb42.jpeg" alt="Comunicación Canina">
+                        <div class="conducta-info">
+                            <h3>Comunicación Canina</h3>
+                            <p>Vocalizaciones, posturas y señales olfativas conforman un sistema comunicativo que regula interacciones sociales y jerarquías. Recorrido: Receptores auditivos/olfatorios → Tronco encefálico → Corteza auditiva/olfatoria → Sistema límbico → Corteza prefrontal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sentidos">
+            <div class="section-content">
+                <h2 class="animate-on-scroll">Percepción Sensorial Canina</h2>
+                <div class="conductas-grid">
+                    
+                    <div class="conducta-card animate-on-scroll">
+                        <img src="SENTIDO/OLFATO.jpeg" alt="Olfato - Perro olfateando">
+                        <div class="conducta-info">
+                            <h3>Olfato (Vía Directa)</h3>
+                            <p>El sentido dominante. Recorrido: Receptores → Bulbo Olfatorio → Sistema Límbico (Amígdala/Hipocampo) → Corteza Olfatoria. No pasa por el Tálamo.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="conducta-card animate-on-scroll" data-delay="100">
+                        <img src="SENTIDO/AUDIO.jpeg" alt="Audición - Orejas atentas">
+                        <div class="conducta-info">
+                            <h3>Audición</h3>
+                            <p>Capacidad de oír hasta 50,000 Hz. Recorrido: Oído → Tronco Encefálico → Colículo Inferior (Localización) → Tálamo → Corteza Auditiva.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="conducta-card animate-on-scroll" data-delay="200">
+                        <img src="SENTIDO/VISION.jpeg" alt="Vista - Perro observando">
+                        <div class="conducta-info">
+                            <h3>Vista</h3>
+                            <p>Especializada en movimiento y visión nocturna (*Tapetum Lucidum*). Recorrido: Retina → Nervio Óptico → Tálamo → Corteza Visual (Lóbulo Occipital).</p>
+                        </div>
+                    </div>
+
+                    <div class="conducta-card animate-on-scroll" data-delay="300">
+                        <img src="SENTIDO/TACTO.jpeg" alt="Tacto - Vibrisas detectando">
+                        <div class="conducta-info">
+                            <h3>Tacto (Vibrisas)</h3>
+                            <p>Detecta presión, dolor y posición. Recorrido: Receptores → Médula Espinal → Tálamo → Corteza Somatosensorial. El Cerebelo ajusta reflejos posturales.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="conducta-card animate-on-scroll" data-delay="400">
+                        <img src="SENTIDO/GUSTO.jpeg" alt="Gusto - Perro probando">
+                        <div class="conducta-info">
+                            <h3>Gusto</h3>
+                            <p>El gusto complementa la información olfativa y contribuye a la evaluación de la palatabilidad de los alimentos. Recorrido: Receptores gustativos → Núcleo del tracto solitario → Tálamo → Corteza gustativa; integración con bulbo olfatorio y sistema límbico.</p>
+                        </div>
+                    </div>
+
+                    <div class="conducta-card animate-on-scroll" data-delay="500">
+                        <img src="IMG/_40d8d643-c15c-4618-9297-2813424bad31.jpeg" alt="Propiocepción - Posición corporal">
+                        <div class="conducta-info">
+                            <h3>Propiocepción</h3>
+                            <p>Información sensorial de posición y movimiento que permite al cerebelo y a la corteza ajustar la ejecución motora y el equilibrio. Recorrido: Receptores propioceptivos (músculo/articulación) → Médula espinal → Cerebelo y Corteza Somatosensorial → Corteza motora.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="precauciones" class="pattern-bg">
+            <div class="section-content animate-on-scroll">
+                <h2>Señales de Alerta Sensorial</h2>
+                <p class="section-description">Detectar a tiempo un fallo en los sentidos o en los ejes cerebrales evita accidentes y permite intervenir con tu veterinario antes de que el daño sea irreversible.</p>
+                <div class="alert-grid">
+                    <article class="alert-card">
+                        <h3><i class="fas fa-eye"></i> Vista / Lóbulo Occipital</h3>
+                        <ul class="alert-list">
+                            <li><strong>Signos:</strong> Tropiezos constantes, miedo a escaleras, mirada perdida.</li>
+                            <li><strong>Acción:</strong> Revisar reflejo pupilar y acudir a un oftalmólogo veterinario.</li>
+                        </ul>
+                    </article>
+                    <article class="alert-card">
+                        <h3><i class="fas fa-nose"></i> Olfato / Bulbo Olfatorio</h3>
+                        <ul class="alert-list">
+                            <li><strong>Signos:</strong> Desinterés por comida, no sigue rastros, respira con dificultad.</li>
+                            <li><strong>Acción:</strong> Evaluar mucosas y descartar infecciones del tracto respiratorio.</li>
+                        </ul>
+                    </article>
+                    <article class="alert-card">
+                        <h3><i class="fas fa-volume-up"></i> Audición / Tronco encefálico</h3>
+                        <ul class="alert-list">
+                            <li><strong>Signos:</strong> No responde a su nombre, sobresaltos tardíos, duerme profundamente.</li>
+                            <li><strong>Acción:</strong> Realizar pruebas BAER y descartar otitis crónicas.</li>
+                        </ul>
+                    </article>
+                    <article class="alert-card">
+                        <h3><i class="fas fa-balance-scale"></i> Equilibrio / Cerebelo</h3>
+                        <ul class="alert-list">
+                            <li><strong>Signos:</strong> Marcha tambaleante, caída hacia un lado, nistagmo.</li>
+                            <li><strong>Acción:</strong> Evaluar reflejos posturales y realizar estudios de imagen.</li>
+                        </ul>
+                    </article>
+                    <article class="alert-card">
+                        <h3><i class="fas fa-heartbeat"></i> Homeostasis / Hipotálamo</h3>
+                        <ul class="alert-list">
+                            <li><strong>Signos:</strong> Cambios bruscos de sed/apetito, intolerancia al calor o frío.</li>
+                            <li><strong>Acción:</strong> Analítica hormonal y seguimiento endocrino.</li>
+                        </ul>
+                    </article>
+                    <article class="alert-card">
+                        <h3><i class="fas fa-brain"></i> Sistema Límbico</h3>
+                        <ul class="alert-list">
+                            <li><strong>Signos:</strong> Ansiedad extrema, agresividad súbita, apatía social.</li>
+                            <li><strong>Acción:</strong> Evaluar historial de estrés y plantear enriquecimiento ambiental.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="caso-rugal">
+            <div class="section-content animate-on-scroll">
+                <h2>Caso Clínico: Rugal</h2>
+                <div class="case-wrapper">
+                    <div class="case-summary">
+                        <p>Rugal, un American Bully macho de 2 años, llegó a consulta tras múltiples accidentes domésticos. Presentaba hipoplasia del eje visual occipital: su corteza visual no se desarrolló adecuadamente, por lo que dependía del olfato y el tacto. Sin embargo, la familia no detectó las señales iniciales (choques con muebles, inseguridad en espacios nuevos) y continuó entrenamientos exigentes de agility.</p>
+                        <p>En un entorno poco seguro, Rugal intentó saltar una plataforma elevada guiándose solo por la memoria motora. La falta de feedback visual provocó una mala caída que lesionó el tronco encefálico y terminó en un paro cardiorrespiratorio.</p>
+                    </div>
+                    <div class="case-data">
+                        <h3>Lecciones Aprendidas</h3>
+                        <ul>
+                            <li><strong>Detección temprana:</strong> Cualquier cambio sensorial debe documentarse con videos y consultarse.</li>
+                            <li><strong>Adaptación del entorno:</strong> Iluminación uniforme, rutas despejadas y señales táctiles pueden compensar déficits.</li>
+                            <li><strong>Sincronía entre ejes:</strong> El cerebelo y los ganglios basales requieren retroalimentación visual para coordinar saltos seguros.</li>
+                            <li><strong>Plan neuroprotectivo:</strong> Complementos antioxidantes y fisioterapia reducen riesgos en perros con hipoplasias sensoriales.</li>
+                        </ul>
+                        <p>La historia de Rugal subraya que comprender los sentidos y ejes cerebrales no es teórico: salva vidas reales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="interaccion" class="pattern-bg">
+            <div class="section-content animate-on-scroll">
+                <h2>Interacción Funcional: Cerebelo y Hipotálamo</h2>
+                <p class="section-description">Estas redes no funcionan aisladas: aquí algunas interacciones clave y cómo se complementan para producir comportamiento adaptativo.</p>
+                <div class="ejes-cards single-card-wrapper">
+                    <div class="card card-3d" id="card-homeostasis" style="cursor: default;">
+                        <h3><i class="fas fa-running"></i> Homeostasis y Movimiento</h3>
+                        <p>El Hipotálamo motiva la acción (ej. buscar comida o huir) al regular el estado interno. El Cerebelo perfecciona la ejecución de ese comportamiento, asegurando que los movimientos sean coordinados y eficientes.</p>
+                    </div>
+
+                    <div class="card card-3d" id="card-limbico-hipotalamo">
+                        <h3><i class="fas fa-heart"></i> Sistema Límbico ↔ Hipotálamo</h3>
+                        <p>Las emociones (amígdala) modulan la respuesta del hipotálamo — por ejemplo, miedo activa respuestas autónomas (taquicardia, liberación de cortisol) que preparan al animal para reaccionar rápidamente.</p>
+                    </div>
+
+                    <div class="card card-3d" id="card-ganglios-corteza">
+                        <h3><i class="fas fa-cogs"></i> Ganglios Basales ↔ Corteza Motora</h3>
+                        <p>Los ganglios basales seleccionan y refuerzan patrones de acción; la corteza motora y el cerebelo afinan el plan motor para su ejecución precisa. Juntos permiten aprender secuencias automáticas y adaptarlas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Sección de conclusión eliminada por solicitud -->
+
+    </main>
+
+    <footer>
+        <p>
+            © 2025 Rugalvet — Proyecto educativo en neurociencia canina.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
