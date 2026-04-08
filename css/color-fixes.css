@@ -1,0 +1,187 @@
+/* Admin Panel Color Fixes & Premium Look */
+
+:root {
+    /* Admin Specific Palette - More Vibrant/Modern */
+    --admin-bg: #f0f9ff;
+    /* Light sky blue bg */
+    --admin-sidebar: #33a1ff;
+    /* Vibrant primary blue for sidebar RUGAL */
+    --admin-accent: #10b981;
+    /* Success green for accents */
+    --admin-accent-dark: #059669;
+    --admin-glass: rgba(255, 255, 255, 0.85);
+
+    --card-bg-light: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --border-color: #e2e8f0;
+    --radius-premium: 16px;
+}
+
+body {
+    background-color: var(--admin-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Sidebar overrides */
+.sidebar {
+    background: var(--admin-sidebar) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.sidebar .logo-text {
+    background: linear-gradient(135deg, white 0%, #cbd5e1 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.menu-item {
+    color: rgba(255, 255, 255, 0.8) !important;
+    padding: 12px 20px !important;
+    margin: 4px 12px !important;
+    border-radius: 10px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border-right: none !important;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: white !important;
+    padding-left: 25px !important;
+}
+
+.menu-item.active {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    font-weight: 700 !important;
+    border-left: 4px solid white !important;
+    padding-left: 25px !important;
+}
+
+.section-title {
+    color: #475569 !important;
+}
+
+/* Header overrides */
+.header {
+    background: white !important;
+    /* Light header for clean look */
+    border-bottom: 1px solid var(--border-color) !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.page-title {
+    color: var(--text-primary) !important;
+}
+
+/* Cards */
+/* Glassmorphism Cards */
+.card,
+.admin-stat-card {
+    background: var(--admin-glass) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: var(--radius-premium) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.admin-stat-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-header {
+    border-bottom: 1px solid var(--border-color) !important;
+    background: transparent !important;
+}
+
+.card-header h3 {
+    color: var(--text-primary) !important;
+}
+
+/* Tables */
+.admin-table th {
+    background: #f8fafc !important;
+    color: var(--text-secondary) !important;
+    text-transform: uppercase;
+    font-size: 11px !important;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.admin-table td {
+    color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.admin-table tr:hover {
+    background-color: #f8fafc !important;
+}
+
+/* Stats Cards Text */
+.admin-stat-card .stat-value {
+    color: var(--text-primary) !important;
+    font-size: 28px !important;
+}
+
+.admin-stat-card .stat-label {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+.admin-stat-card .stat-sub {
+    color: #94a3b8 !important;
+}
+
+/* Buttons */
+.btn-create,
+.btn-primary {
+    background: var(--admin-accent) !important;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2) !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-create:hover,
+.btn-primary:hover {
+    background: var(--admin-accent-hover) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Badges */
+.role-badge {
+    text-transform: capitalize;
+}
+
+.role-admin {
+    background: #4f46e5 !important;
+    color: white !important;
+}
+
+.role-veterinaria {
+    background: #059669 !important;
+    color: white !important;
+}
+
+.role-tienda {
+    background: #d97706 !important;
+    color: white !important;
+}
+
+.role-usuario {
+    background: #64748b !important;
+    color: white !important;
+}
+
+/* Status Badges */
+.status-active {
+    background: #dcfce7 !important;
+    color: #166534 !important;
+}
+
+.status-inactive {
+    background: #fee2e2 !important;
+    color: #991b1b !important;
+}

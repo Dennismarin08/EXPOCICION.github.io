@@ -1,0 +1,539 @@
+/**
+ * RUGAL - Colores Vibrantes y Alta Visibilidad
+ * Esquema de colores con MÁXIMO CONTRASTE
+ */
+
+:root {
+    /* ========================================
+       FONDOS - Muy oscuros para contraste
+       ======================================== */
+    --bg-principal: #0A0E27;
+    /* Azul muy oscuro casi negro */
+    --bg-card: #1A1F3A;
+    /* Azul oscuro para cards */
+    --bg-sidebar: #1e1e2d47;
+    /* Negro azulado */
+    --bg-input: #0F172A;
+    /* Fondo inputs */
+    --bg-hover: #1E293B;
+    /* Hover states */
+
+    /* ========================================
+       TEXTOS - Blancos y muy visibles
+       ======================================== */
+    --texto-principal: #FFFFFF;
+    /* Blanco puro - títulos */
+    --texto-secundario: #E2E8F0;
+    /* Blanco grisáceo - párrafos */
+    --texto-terciario: #CBD5E1;
+    /* Gris claro - labels */
+    --texto-muted: #94A3B8;
+    /* Gris medio - hints */
+
+    /* ========================================
+       COLORES VIBRANTES - Acentos brillantes
+       ======================================== */
+    --primary: #33a1ff;
+    /* Azul brillante RUGAL */
+    --primary-light: #5fc1ff;
+    /* Azul más claro */
+    --primary-dark: #1d91f0;
+    /* Azul más oscuro */
+
+    --secondary: #10B981;
+    /* Verde brillante */
+    --secondary-light: #34D399;
+    /* Verde claro */
+
+    --accent: #F59E0B;
+    /* Naranja brillante */
+    --accent-light: #FBBF24;
+    /* Naranja claro */
+
+    --premium: #33a1ff;
+    /* Azul brillante RUGAL */
+    --premium-dark: #1d91f0;
+    /* Azul más oscuro */
+
+    --danger: #EF4444;
+    /* Rojo brillante */
+    --danger-light: #F87171;
+    /* Rojo claro */
+
+    --success: #10B981;
+    /* Verde éxito */
+    --warning: #F59E0B;
+    /* Naranja advertencia */
+    --info: #3B82F6;
+    /* Azul info */
+
+    /* ========================================
+       GRADIENTES VIBRANTES
+       ======================================== */
+    --gradient-primary: linear-gradient(135deg, #33a1ff 0%, #1d91f0 100%);
+    --gradient-secondary: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    --gradient-premium: linear-gradient(135deg, #33a1ff 0%, #1d91f0 100%);
+    --gradient-danger: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+    --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+
+    /* ========================================
+       BORDES Y SOMBRAS
+       ======================================== */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color-light: rgba(255, 255, 255, 0.2);
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 20px rgba(51, 161, 255, 0.3);
+    --shadow-premium: 0 0 30px rgba(251, 191, 36, 0.4);
+}
+
+/* ========================================
+   RESET Y BASE
+   ======================================== */
+body {
+    background-color: var(--bg-principal) !important;
+    color: var(--texto-principal) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--texto-principal) !important;
+    font-weight: 700;
+}
+
+p,
+span,
+div,
+label,
+a {
+    color: var(--texto-secundario) !important;
+}
+
+/* ========================================
+   SIDEBAR
+   ======================================== */
+.sidebar {
+    background: var(--bg-sidebar) !important;
+    border-right: 1px solid var(--border-color) !important;
+}
+
+.logo-text {
+    background: var(--gradient-primary) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.section-title {
+    color: var(--texto-muted) !important;
+}
+
+.menu-item {
+    color: var(--texto-secundario) !important;
+}
+
+.menu-item:hover {
+    background: rgba(51, 161, 255, 0.1) !important;
+    color: var(--primary-light) !important;
+}
+
+.menu-item.active {
+    background: rgba(51, 161, 255, 0.15) !important;
+    color: var(--primary-light) !important;
+    border-right: 3px solid var(--primary) !important;
+}
+
+.menu-item.logout {
+    color: var(--danger-light) !important;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+.header {
+    background: var(--bg-card) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.page-title {
+    color: var(--texto-principal) !important;
+}
+
+.breadcrumb,
+.breadcrumb span {
+    color: var(--texto-muted) !important;
+}
+
+/* ========================================
+   CARDS
+   ======================================== */
+.card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md) !important;
+    border-color: var(--border-color-light) !important;
+}
+
+.card-header h3 {
+    color: var(--texto-principal) !important;
+}
+
+/* ========================================
+   WELCOME CARD
+   ======================================== */
+.welcome-card {
+    background: var(--gradient-primary) !important;
+    box-shadow: var(--shadow-glow) !important;
+}
+
+.welcome-card h2,
+.welcome-card p,
+.welcome-card strong {
+    color: #FFFFFF !important;
+}
+
+/* ========================================
+   BOTONES
+   ======================================== */
+.btn-add,
+.btn-primary {
+    background: var(--gradient-primary) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.btn-add:hover,
+.btn-primary:hover {
+    box-shadow: var(--shadow-glow) !important;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--gradient-secondary) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-premium {
+    background: var(--gradient-premium) !important;
+    color: #000000 !important;
+    font-weight: 700 !important;
+    box-shadow: var(--shadow-premium) !important;
+}
+
+.btn-outline {
+    background: transparent !important;
+    border: 2px solid var(--primary) !important;
+    color: var(--primary-light) !important;
+}
+
+.btn-outline:hover {
+    background: rgba(51, 161, 255, 0.1) !important;
+    color: var(--primary-light) !important;
+}
+
+.btn-text {
+    color: var(--primary-light) !important;
+}
+
+/* ========================================
+   INPUTS Y FORMULARIOS
+   ======================================== */
+input,
+select,
+textarea {
+    background: var(--bg-input) !important;
+    color: var(--texto-principal) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--texto-muted) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px rgba(51, 161, 255, 0.2) !important;
+    outline: none !important;
+}
+
+label {
+    color: var(--texto-terciario) !important;
+    font-weight: 600 !important;
+}
+
+/* ========================================
+   ESTADÍSTICAS
+   ======================================== */
+.stat-card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.stat-value {
+    color: var(--texto-principal) !important;
+}
+
+.stat-label {
+    color: var(--texto-muted) !important;
+}
+
+/* ========================================
+   MASCOTA CARD
+   ======================================== */
+.pet-details h4 {
+    color: var(--texto-principal) !important;
+}
+
+.pet-type,
+.pet-age {
+    color: var(--texto-terciario) !important;
+}
+
+.pet-qr {
+    background: var(--bg-input) !important;
+    color: var(--texto-muted) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+/* ========================================
+   CITAS
+   ======================================== */
+.cita-card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.cita-card h3,
+.cita-card h4 {
+    color: var(--texto-principal) !important;
+}
+
+.cita-card p {
+    color: var(--texto-secundario) !important;
+}
+
+.info-item {
+    color: var(--texto-secundario) !important;
+}
+
+.info-item i {
+    color: var(--primary-light) !important;
+}
+
+/* Estados de citas con colores MUY visibles */
+.estado-pendiente {
+    background: rgba(251, 191, 36, 0.2) !important;
+    color: #FBBF24 !important;
+    border: 1px solid #FBBF24 !important;
+}
+
+.estado-confirmada {
+    background: rgba(16, 185, 129, 0.2) !important;
+    color: #34D399 !important;
+    border: 1px solid #10B981 !important;
+}
+
+.estado-completada {
+    background: rgba(59, 130, 246, 0.2) !important;
+    color: #60A5FA !important;
+    border: 1px solid #3B82F6 !important;
+}
+
+.estado-cancelada {
+    background: rgba(239, 68, 68, 0.2) !important;
+    color: #F87171 !important;
+    border: 1px solid #EF4444 !important;
+}
+
+/* ========================================
+   BADGES Y ETIQUETAS
+   ======================================== */
+.badge {
+    background: var(--gradient-premium) !important;
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+.badge-premium {
+    background: var(--gradient-premium) !important;
+    color: #000000 !important;
+    padding: 6px 16px !important;
+    border-radius: 20px !important;
+    font-weight: 700 !important;
+    box-shadow: var(--shadow-premium) !important;
+}
+
+.badge-free {
+    background: rgba(148, 163, 184, 0.2) !important;
+    color: var(--texto-terciario) !important;
+    padding: 6px 16px !important;
+    border-radius: 20px !important;
+    border: 1px solid var(--texto-muted) !important;
+}
+
+/* ========================================
+   PREMIUM UI
+   ======================================== */
+.premium-banner {
+    background: var(--gradient-premium) !important;
+    color: #000000 !important;
+    padding: 20px !important;
+    border-radius: 15px !important;
+    box-shadow: var(--shadow-premium) !important;
+}
+
+.premium-banner h3,
+.premium-banner p {
+    color: #000000 !important;
+}
+
+.locked-feature {
+    position: relative;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.locked-feature::after {
+    content: '🔒';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    z-index: 10;
+}
+
+.locked-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 14, 39, 0.8);
+    backdrop-filter: blur(4px);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.locked-overlay i {
+    font-size: 48px;
+    color: var(--premium) !important;
+    margin-bottom: 15px;
+}
+
+.locked-overlay h4 {
+    color: var(--texto-principal) !important;
+    margin-bottom: 10px;
+}
+
+.locked-overlay p {
+    color: var(--texto-muted) !important;
+    margin-bottom: 20px;
+}
+
+/* ========================================
+   TABS
+   ======================================== */
+.tab {
+    color: var(--texto-muted) !important;
+}
+
+.tab.active {
+    color: var(--primary-light) !important;
+    border-bottom-color: var(--primary) !important;
+}
+
+/* ========================================
+   EMPTY STATES
+   ======================================== */
+.empty-state {
+    color: var(--texto-muted) !important;
+}
+
+.empty-state h3 {
+    color: var(--texto-secundario) !important;
+}
+
+/* ========================================
+   NOTIFICACIONES
+   ======================================== */
+.notification-bell {
+    background: var(--bg-input) !important;
+    color: var(--texto-secundario) !important;
+}
+
+.notification-bell:hover {
+    background: var(--primary) !important;
+    color: #FFFFFF !important;
+}
+
+.notification-count {
+    background: var(--danger) !important;
+    color: #FFFFFF !important;
+}
+
+/* ========================================
+   SEARCH BOX
+   ======================================== */
+.search-box input {
+    background: var(--bg-input) !important;
+    color: var(--texto-principal) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.search-box i {
+    color: var(--texto-muted) !important;
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(51, 161, 255, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(51, 161, 255, 0.6);
+    }
+}
+
+@keyframes premium-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 30px rgba(251, 191, 36, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 50px rgba(251, 191, 36, 0.7);
+    }
+}
+
+.glow-effect {
+    animation: glow 2s ease-in-out infinite;
+}
+
+.premium-glow {
+    animation: premium-glow 2s ease-in-out infinite;
+}

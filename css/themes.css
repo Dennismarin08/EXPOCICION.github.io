@@ -1,0 +1,119 @@
+/* RUGAL - UI DESIGN SYSTEM V1.0
+   Centralized Theme Management for Role-Based Interfaces
+   =========================================================== */
+
+:root {
+    /* DEFAULT TOKENS (Common across all themes) */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 1. USUARIO FINAL (Dueños de Mascotas)
+   Style: Modern, Tech, Premium, Friendly.
+   =========================================================== */
+body.theme-usuario {
+    --p-primary: #6E6AD9;
+    /* Violeta principal */
+    --p-primary-dark: #5B57C8;
+    /* Violeta oscuro */
+    --p-accent: #7C89F5;
+    /* Azul acento */
+    --p-bg-main: #F5F6FA;
+    /* Gris claro fondo */
+    --p-bg-card: #FFFFFF;
+    /* Blanco card */
+    --p-text-main: #2D3748;
+    /* Gris oscuro texto */
+    --p-text-muted: #718096;
+    /* Gris medio texto */
+    --p-border: #E2E8F0;
+
+    --p-gradient: linear-gradient(135deg, #6E6AD9 0%, #7C89F5 100%);
+    --p-glass: rgba(255, 255, 255, 0.85);
+}
+
+/* 2. ALIADOS VETERINARIAS
+   Style: Clean, Medical, Professional, Trust and Health.
+   =========================================================== */
+body.theme-vet {
+    --p-primary: #4DA3FF;
+    /* Azul principal */
+    --p-primary-dark: #3a8ee6;
+    --p-accent: #4CAF93;
+    /* Verde suave salud */
+    --p-bg-main: #EAF3FF;
+    /* Azul muy claro fonod */
+    --p-bg-card: #FFFFFF;
+    --p-text-main: #2F3A4A;
+    /* Gris texto salud */
+    --p-text-muted: #64748b;
+    --p-border: #D1E1F5;
+
+    --p-gradient: linear-gradient(135deg, #4DA3FF 0%, #4CAF93 100%);
+    --p-glass: rgba(255, 255, 255, 0.9);
+}
+
+/* 3. ALIADOS TIENDAS DE MASCOTAS
+   Style: Commercial, Warm, Modern, Sales-focused.
+   =========================================================== */
+body.theme-tienda {
+    --p-primary: #FF8A3D;
+    /* Naranja principal */
+    --p-primary-dark: #E67A2E;
+    --p-accent: #5B57C8;
+    /* Violeta RUGAL (Details) */
+    --p-bg-main: #FFE3D1;
+    /* Naranja suave fondo */
+    --p-bg-card: #FFFFFF;
+    --p-text-main: #333333;
+    /* Gris oscuro texto */
+    --p-text-muted: #666666;
+    --p-border: #F7DBC7;
+
+    --p-gradient: linear-gradient(135deg, #FF8A3D 0%, #5B57C8 100%);
+    --p-glass: rgba(255, 255, 255, 0.95);
+}
+
+/* GLOBAL SEMANTIC MAPPINGS
+   Apply these to your components to ensure they respond to themes.
+   =========================================================== */
+
+/* Sidebar Background */
+.sidebar {
+    background-color: #8b8bd9 !important;
+}
+
+/* Main Buttons */
+.btn-primary,
+.btn-submit,
+.btn-add {
+    background: var(--p-gradient) !important;
+    color: rgb(0, 0, 0) !important;
+    border: none !important;
+}
+
+/* Active Menu Items */
+.menu-item.active {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-left: 4px solid white !important;
+}
+
+/* Cards */
+.card,
+.stat-card,
+.widget {
+    background-color: var(--p-bg-card) !important;
+    border: 1px solid var(--p-border) !important;
+}
+
+/* Body Background */
+body {
+    background-color: var(--p-bg-main) !important;
+    color: var(--p-text-main) !important;
+}

@@ -1,0 +1,931 @@
+/**
+ * RUGAL - Responsive Design System
+ * responsive.css
+ * Mobile-first responsive styles that maintain the current design aesthetic
+ */
+
+/* ========================================
+   VARIABLES RESPONSIVE
+   ======================================== */
+
+:root {
+    --mobile-breakpoint: 768px;
+    --tablet-breakpoint: 1024px;
+    --sidebar-width-mobile: 260px;
+    --header-height-mobile: 60px;
+}
+
+/* ========================================
+   HAMBURGER MENU (Mobile Only)
+   ======================================== */
+
+.hamburger-menu {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 2000;
+    background: var(--primary-color);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(51, 161, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(51, 161, 255, 0.4);
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: white;
+    margin: 5px auto;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Overlay para cerrar sidebar en mobile */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+}
+
+/* ========================================
+   TABLET (768px - 1024px)
+   ======================================== */
+
+@media (max-width: 1024px) {
+
+    /* Ajustar grids para tablet */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .recompensas-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .canjes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .tienda-products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Reducir padding en content */
+    .content-wrapper {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .card-header {
+        padding: 20px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+}
+
+/* ========================================
+   MOBILE (< 768px)
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    /* Mostrar hamburger menu */
+    .hamburger-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Sidebar mobile */
+    .sidebar {
+        position: fixed;
+        left: -260px;
+        width: 260px;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    /* Main content sin margen cuando sidebar está oculto */
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    /* Header mobile */
+    .header {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .header-left {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    .breadcrumb {
+        font-size: 12px;
+    }
+
+    .header-right {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    /* Botones mobile */
+    .btn-add {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-outline {
+        width: 100%;
+        justify-content: center;
+        font-size: 13px;
+    }
+
+    /* Content wrapper mobile */
+    .content-wrapper {
+        padding: 15px;
+        gap: 20px;
+    }
+
+    /* Grids mobile - 1 columna */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 15px;
+    }
+
+    .recompensas-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .canjes-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .tienda-products {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .tienda-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    /* Cards mobile */
+    .card {
+        border-radius: 16px;
+    }
+
+    .card-header {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .card-header h3 {
+        font-size: 16px;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    /* Welcome card mobile */
+    .welcome-card h2 {
+        font-size: 22px;
+    }
+
+    .welcome-text {
+        font-size: 14px;
+    }
+
+    .welcome-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .welcome-illustration {
+        display: none;
+    }
+
+    /* Recompensas header mobile */
+    .recompensas-header {
+        padding: 25px 20px;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .recompensas-header h2 {
+        font-size: 22px !important;
+    }
+
+    .puntos-disponibles {
+        width: 100%;
+    }
+
+    /* Tienda header mobile */
+    .tienda-header {
+        padding: 25px 20px;
+    }
+
+    .vet-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .vet-name h1 {
+        font-size: 22px;
+    }
+
+    /* Tabs mobile */
+    .tabs {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .tab {
+        padding: 10px 15px;
+        font-size: 13px;
+        flex: 1;
+        min-width: calc(50% - 4px);
+        text-align: center;
+    }
+
+    /* Modales mobile */
+    .modal-content {
+        width: 95%;
+        max-width: 95%;
+        margin: 10px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-header {
+        padding: 15px;
+    }
+
+    .modal-body {
+        padding: 15px;
+    }
+
+    .modal-footer {
+        padding: 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .modal-footer button {
+        width: 100%;
+    }
+
+    /* Formularios mobile */
+    .redeem-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .redeem-input {
+        font-size: 16px;
+        /* Evita zoom en iOS */
+    }
+
+    .btn-tienda-validate {
+        width: 100%;
+        padding: 15px;
+    }
+
+    /* Canje cards mobile */
+    .canje-card {
+        padding: 20px;
+    }
+
+    .canje-titulo {
+        font-size: 18px;
+    }
+
+    .codigo-canje {
+        font-size: 22px;
+        padding: 20px;
+        letter-spacing: 1px;
+    }
+
+    .canje-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Pet card mobile */
+    .pet-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pet-meta {
+        justify-content: center;
+    }
+
+    .pet-stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Search box mobile */
+    .search-box {
+        width: 100%;
+    }
+
+    /* Row system mobile */
+    .row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .col-12,
+    .col-8,
+    .col-6,
+    .col-4 {
+        width: 100%;
+    }
+
+    /* Stat cards mobile */
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .stat-value {
+        font-size: 20px;
+    }
+
+    .stat-label {
+        font-size: 11px;
+    }
+
+    /* Appointments mobile */
+    .appointment-item {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .appointment-date {
+        flex-direction: row;
+        gap: 10px;
+        margin-bottom: 5px;
+    }
+
+    /* Redeem card mobile */
+    .redeem-card {
+        padding: 20px;
+    }
+
+    /* Ally list mobile */
+    #allyList {
+        max-height: 250px;
+    }
+
+    .ally-select-item {
+        padding: 12px !important;
+    }
+}
+
+/* ========================================
+   SMALL MOBILE (< 480px)
+   ======================================== */
+
+@media (max-width: 480px) {
+
+    /* Reducir aún más el tamaño de fuente */
+    :root {
+        font-size: 14px;
+    }
+
+    .page-title {
+        font-size: 18px;
+    }
+
+    .recompensas-header h2 {
+        font-size: 20px !important;
+    }
+
+    .tienda-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .codigo-canje {
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    .puntos-numero {
+        font-size: 28px !important;
+    }
+}
+
+/* ========================================
+   DASHBOARD USER SPECIFIC RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    /* Widget de puntos - mejoras adicionales */
+    .puntos-widget-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .puntos-widget-upgrade-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .puntos-widget-upgrade-btn {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    /* Pet hero card mejoras */
+    .pet-hero-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pet-hero-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .pet-hero-btn {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    /* Plan de salud */
+    .plan-salud-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Recordatorios */
+    .reminder-filters {
+        flex-wrap: wrap;
+    }
+
+    .btn-filter {
+        min-width: calc(50% - 4px);
+        font-size: 11px;
+    }
+
+    /* Community feed */
+    .community-feed-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Plan de Salud Responsiveness */
+    .form-grid {
+        display: block;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-header {
+        padding: 20px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .plan-section {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .plan-section h3 {
+        font-size: 16px;
+    }
+
+    .plan-section p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-filter {
+        min-width: 100%;
+        margin-bottom: 4px;
+    }
+
+    .pet-hero-title {
+        font-size: 20px !important;
+    }
+
+    .pet-hero-image,
+    .pet-hero-placeholder {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* ========================================
+   USER SECTION PAGES (Educación, Comunidad, Perfil)
+   ======================================== */
+
+@media (max-width: 768px) {
+    .edu-container {
+        padding: 15px;
+    }
+
+    .community-container {
+        padding: 15px;
+    }
+
+    .profile-content {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-header {
+        padding: 28px 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   LANDSCAPE MOBILE
+   ======================================== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+
+    .sidebar {
+        width: 220px;
+        left: -220px;
+    }
+
+    .header {
+        padding: 10px 15px;
+    }
+
+    .content-wrapper {
+        padding: 15px;
+    }
+
+    .modal-content {
+        max-height: 85vh;
+    }
+}
+
+/* ========================================
+   TOUCH IMPROVEMENTS
+   ======================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+    /* Aumentar área de toque para botones */
+    .btn,
+    .btn-add,
+    .btn-primary,
+    .btn-secondary,
+    .menu-item,
+    .tab {
+        min-height: 44px;
+        /* Tamaño mínimo recomendado para touch */
+    }
+
+    /* Mejorar feedback táctil */
+    .btn:active,
+    .menu-item:active,
+    .tab:active {
+        transform: scale(0.98);
+        opacity: 0.8;
+    }
+
+    /* Remover hover effects en touch */
+    .card:hover,
+    .stat-card:hover,
+    .glass-card:hover {
+        transform: none;
+    }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+
+    .sidebar,
+    .header,
+    .hamburger-menu,
+    .sidebar-overlay,
+    .btn-add,
+    .modal-overlay {
+        display: none !important;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .content-wrapper {
+        padding: 0;
+    }
+
+    .card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+/* ========================================
+   GAMIFICATION SPECIFIC RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    /* Tareas Page */
+    .stats-row {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+
+    .tarea-card {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 20px !important;
+        gap: 15px;
+    }
+
+    .tarea-icon {
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+    }
+
+    .tarea-titulo {
+        font-size: 16px !important;
+    }
+
+    .tarea-info {
+        width: 100%;
+    }
+
+    .tarea-puntos {
+        margin-right: 0 !important;
+        margin-bottom: 5px;
+        font-size: 20px !important;
+    }
+
+    .btn-completar {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Ranking Page */
+    .ranking-header {
+        padding: 30px 20px !important;
+    }
+
+    .podium {
+        gap: 10px !important;
+        margin-top: 30px !important;
+        align-items: flex-end;
+    }
+
+    .podium-avatar {
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    .podium-1 .podium-avatar {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .podium-box {
+        width: 80px !important;
+        font-size: 18px !important;
+    }
+
+    .podium-1 .podium-box { height: 80px !important; }
+    .podium-2 .podium-box { height: 60px !important; }
+    .podium-3 .podium-box { height: 40px !important; }
+
+    .ranking-row {
+        padding: 12px 15px !important;
+    }
+
+    .col-pos { width: 35px !important; font-size: 14px !important; }
+    .col-points { width: 90px !important; font-size: 13px !important; }
+    .col-level { display: none !important; } /* Hide level on small mobile to save space */
+
+    /* Mis Canjes Page */
+    .tabs {
+        flex-wrap: wrap !important;
+        justify-content: center;
+    }
+
+    .tab {
+        padding: 8px 15px !important;
+        font-size: 12px !important;
+        flex: 1 1 calc(50% - 10px);
+    }
+
+    .canje-card {
+        padding: 15px !important;
+    }
+
+    .codigo-canje {
+        font-size: 20px !important;
+        padding: 15px !important;
+        letter-spacing: 1px !important;
+    }
+
+    /* Recompensas Header */
+    .puntos-disponibles {
+        padding: 10px 15px !important;
+    }
+
+    .puntos-numero {
+        font-size: 24px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .podium-avatar {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .podium-1 .podium-avatar {
+        width: 70px !important;
+        height: 70px !important;
+    }
+
+    .podium-box {
+        width: 60px !important;
+    }
+
+    .tab {
+        flex: 1 1 100%;
+    }
+}
+
+/* Additional Gamification Refinements */
+@media (max-width: 768px) {
+    .canje-header {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+    .canje-badge {
+        align-self: flex-start !important;
+    }
+    .canje-info {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Tareas Filter Chips */
+@media (max-width: 768px) {
+    .tareas-tabs {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        padding: 10px !important;
+        border-bottom: none !important;
+        background: #f8fafc !important;
+        border-radius: 16px !important;
+        margin-bottom: 25px !important;
+        border: 1px solid #e2e8f0 !important;
+    }
+
+    .tareas-tabs .tab {
+        flex: auto !important;
+        padding: 10px 18px !important;
+        background: white !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 30px !important;
+        font-size: 13px !important;
+        color: #64748b !important;
+        transition: all 0.2s ease !important;
+        margin-bottom: 0 !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important;
+    }
+
+    .tareas-tabs .tab.active {
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+        color: white !important;
+        border-color: transparent !important;
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3) !important;
+        font-weight: 700 !important;
+    }
+
+    .tareas-tabs .tab i {
+        margin-right: 6px;
+    }
+}

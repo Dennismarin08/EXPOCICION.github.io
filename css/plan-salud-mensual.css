@@ -1,0 +1,639 @@
+/* ==========================================
+   PLAN DE SALUD MENSUAL - PREMIUM UI V2.0
+   ========================================== */
+
+:root {
+    --psm-primary: #3b82f6;
+    --psm-primary-dark: #1d4ed8;
+    --psm-success: #10b981;
+    --psm-warning: #f59e0b;
+    --psm-danger: #ef4444;
+    --psm-text: #1e293b;
+    --psm-text-light: #64748b;
+    --psm-bg: #f8fafc;
+    --psm-card-bg: #ffffff;
+    --psm-border: #e2e8f0;
+    --psm-radius: 16px;
+    --psm-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --psm-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Layout & Container */
+.psm-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--psm-text);
+}
+
+/* Header */
+.psm-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    background: linear-gradient(135deg, var(--psm-primary) 0%, var(--psm-primary-dark) 100%);
+    color: white;
+    padding: 3rem 1.5rem;
+    border-radius: var(--psm-radius);
+    box-shadow: var(--psm-shadow);
+}
+
+.psm-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.psm-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Alert Boxes */
+.psm-alert-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border: 1px solid transparent;
+}
+
+.psm-alert-box.alert-warning {
+    background: #fffbeb;
+    border-color: #fcd34d;
+    color: #92400e;
+}
+
+.psm-alert-box i {
+    font-size: 1.5rem;
+    margin-top: 0.2rem;
+}
+
+.psm-alert-box h4 {
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.psm-alert-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Status Card (Existing Plan) */
+.psm-status-card {
+    background: var(--psm-card-bg);
+    border-radius: var(--psm-radius);
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: var(--psm-shadow);
+    margin-bottom: 2.5rem;
+    border: 2px solid var(--psm-border);
+    transition: all 0.3s ease;
+}
+
+.psm-status-card.status-verde {
+    border-color: var(--psm-success);
+    background: #ecfdf5;
+}
+
+.psm-status-card.status-amarillo {
+    border-color: var(--psm-warning);
+    background: #fffbeb;
+}
+
+.psm-status-card.status-rojo {
+    border-color: var(--psm-danger);
+    background: #fef2f2;
+}
+
+.status-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.status-verde .status-icon {
+    color: var(--psm-success);
+}
+
+.status-amarillo .status-icon {
+    color: var(--psm-warning);
+}
+
+.status-rojo .status-icon {
+    color: var(--psm-danger);
+}
+
+.status-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.pulsate {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Dashboard Grid */
+.psm-dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) {
+    .psm-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.psm-card {
+    background: var(--psm-card-bg);
+    border-radius: var(--psm-radius);
+    box-shadow: var(--psm-shadow);
+    overflow: hidden;
+    border: 1px solid var(--psm-border);
+}
+
+.card-header {
+    background: #f8fafc;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--psm-border);
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Routine Columns */
+.routine-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.routine-col h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.routine-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.routine-col li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--psm-border);
+    font-size: 0.9rem;
+    color: var(--psm-text-light);
+}
+
+/* Wizard Form */
+.psm-wizard-form {
+    background: var(--psm-card-bg);
+    border-radius: var(--psm-radius);
+    box-shadow: var(--psm-shadow);
+    overflow: hidden;
+}
+
+.psm-pet-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    background: #f1f5f9;
+    border-bottom: 1px solid var(--psm-border);
+}
+
+.pet-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--psm-text-light);
+    border: 2px solid var(--psm-border);
+}
+
+.pet-info h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.2rem;
+}
+
+.pet-info span {
+    color: var(--psm-text-light);
+    font-size: 0.9rem;
+}
+
+/* Wizard Progress */
+.psm-wizard-progress {
+    padding: 2rem;
+    background: white;
+}
+
+.progress-bar-bg {
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--psm-primary);
+    transition: width 0.4s ease;
+}
+
+.steps-indicator {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step {
+    font-size: 0.85rem;
+    color: var(--psm-text-light);
+    font-weight: 500;
+}
+
+.step.active {
+    color: var(--psm-primary);
+    font-weight: 700;
+}
+
+/* Wizard Steps Content */
+.wizard-step {
+    display: none;
+    padding: 2rem;
+    animation: fadeIn 0.4s ease;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-section {
+    margin-bottom: 2.5rem;
+}
+
+.form-section h3 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--psm-border);
+    color: var(--psm-text);
+}
+
+/* Grids & Cards Selection */
+.bcs-selector-grid,
+.radio-group-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+}
+
+.bcs-card,
+.radio-card .card-content {
+    border: 2px solid var(--psm-border);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+}
+
+.radio-card input,
+.bcs-option input {
+    display: none;
+}
+
+.radio-card input:checked+.card-content,
+.bcs-option input:checked+.bcs-card {
+    border-color: var(--psm-primary);
+    background: #eff6ff;
+    color: var(--psm-primary-dark);
+}
+
+.bcs-val {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.bcs-desc {
+    font-size: 0.85rem;
+    color: var(--psm-text-light);
+}
+
+/* Symptom Cards */
+.sintomas-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.sintoma-card {
+    background: white;
+    border: 1px solid var(--psm-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.2s;
+}
+
+.sintoma-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: #f1f5f9;
+    color: var(--psm-text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.severity-selector {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: 4rem;
+    /* Align with text */
+}
+
+.sev-btn {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--psm-border);
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.sev-btn:hover {
+    background: #f8fafc;
+}
+
+.sev-btn.active {
+    background: var(--psm-text-light);
+    color: white;
+    border-color: var(--psm-text-light);
+}
+
+.sev-btn.low.active {
+    background: var(--psm-warning);
+    border-color: var(--psm-warning);
+}
+
+.sev-btn.med.active {
+    background: #f97316;
+    border-color: #f97316;
+}
+
+.sev-btn.high.active {
+    background: var(--psm-danger);
+    border-color: var(--psm-danger);
+}
+
+.sintoma-details {
+    margin-top: 1rem;
+    margin-left: 4rem;
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    display: none;
+}
+
+/* Form Controls */
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group.half {
+    flex: 1;
+}
+
+.form-group.third {
+    flex: 1;
+}
+
+.psm-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.psm-input,
+.psm-select,
+.psm-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--psm-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+    background: white;
+}
+
+.psm-input:focus,
+.psm-select:focus,
+.psm-textarea:focus {
+    outline: none;
+    border-color: var(--psm-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Buttons */
+.psm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    border: none;
+    font-size: 1rem;
+}
+
+.psm-btn-primary {
+    background: var(--psm-primary);
+    color: white;
+}
+
+.psm-btn-primary:hover {
+    background: var(--psm-primary-dark);
+    transform: translateY(-1px);
+}
+
+.psm-btn-secondary {
+    background: white;
+    border: 1px solid var(--psm-border);
+    color: var(--psm-text);
+}
+
+.psm-btn-secondary:hover {
+    background: #f8fafc;
+    border-color: var(--psm-text-light);
+}
+
+.psm-btn-submit {
+    background: var(--psm-success);
+    color: white;
+    width: 100%;
+    justify-content: center;
+}
+
+.psm-btn-submit:hover {
+    background: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.wizard-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--psm-border);
+}
+
+.wizard-footer.right {
+    justify-content: flex-end;
+}
+
+/* Selection Cards */
+.psm-selection-container {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.empty-state {
+    margin-bottom: 3rem;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    color: var(--psm-border);
+    margin-bottom: 1rem;
+}
+
+.pet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pet-card-select {
+    background: white;
+    border: 2px solid var(--psm-border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: var(--psm-text);
+}
+
+.pet-card-select:hover {
+    border-color: var(--psm-primary);
+    transform: translateY(-4px);
+    box-shadow: var(--psm-shadow-hover);
+}
+
+.pet-card-select .pet-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #eff6ff;
+    color: var(--psm-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.add-new .pet-icon {
+    background: #f0fdf4;
+    color: var(--psm-success);
+}
+
+.add-new:hover {
+    border-color: var(--psm-success);
+    color: var(--psm-success);
+}
