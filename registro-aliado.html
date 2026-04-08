@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Aliado - RUGAL</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 640px;
+        }
+
+        .auth-card {
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .logo-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 26px;
+            margin: 0 auto 12px;
+        }
+
+        .logo-text {
+            font-size: 30px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 6px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 28px;
+            font-size: 15px;
+        }
+
+        .role-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            padding: 12px 16px;
+            background: rgba(102, 126, 234, 0.08);
+            border-radius: 12px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .role-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .role-icon.vet {
+            background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+        }
+
+        .role-icon.store {
+            background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+        }
+
+        /* Section headers */
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #667eea;
+            padding: 18px 0 10px;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.15);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: #444;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .required {
+            color: #ff4757;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 13px 16px;
+            border: 2px solid #e8ecf4;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: #fafbff;
+            color: #333;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.12);
+            background: #fff;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        textarea.form-input {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        /* Photo upload area */
+        .photo-upload-area {
+            border: 2px dashed #c4cce8;
+            border-radius: 14px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            background: #f8f9ff;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .photo-upload-area:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.03);
+        }
+
+        .photo-upload-area input {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .photo-upload-icon {
+            font-size: 32px;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .photo-upload-text {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .photo-upload-hint {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .photo-previews {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+
+        .photo-preview-item {
+            width: 90px;
+            height: 90px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #e2e8f0;
+        }
+
+        .photo-preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-preview-remove {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            background: rgba(239, 68, 68, 0.85);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 11px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Maps embed */
+        .maps-hint {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .maps-preview {
+            margin-top: 10px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #e2e8f0;
+            display: none;
+        }
+
+        .maps-preview iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            display: block;
+        }
+
+        /* Checkbox */
+        .checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .checkbox input {
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            accent-color: #667eea;
+            flex-shrink: 0;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.35);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .error {
+            color: #ff4757;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .spinner {
+            border: 3px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #667eea;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        /* Success state */
+        .success-panel {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            color: white;
+            animation: popIn 0.5s ease;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            70% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-panel h2 {
+            color: #0f172a;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .success-panel p {
+            color: #64748b;
+            line-height: 1.6;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
+        .success-msg-box {
+            margin-top: 20px;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 14px;
+            font-size: 14px;
+            color: #334155;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 22px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 640px) {
+            .auth-card {
+                padding: 28px 18px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.php" style="position: absolute; top: 20px; left: 20px; color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 15px; background: rgba(0,0,0,0.2); padding: 10px 18px; border-radius: 50px; backdrop-filter: blur(5px); transition: all 0.3s; z-index: 100;" onmouseover="this.style.background='rgba(0,0,0,0.4)'" onmouseout="this.style.background='rgba(0,0,0,0.2)'">
+        <i class="fas fa-arrow-left"></i> Volver al inicio
+    </a>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-handshake"></i></div>
+                <div class="logo-text">RUGAL ALIADO</div>
+            </div>
+
+            <div class="role-indicator" id="roleIndicator">
+                <div class="role-icon vet" id="vetIcon" style="display:none;"><i class="fas fa-hospital"></i></div>
+                <div class="role-icon store" id="storeIcon" style="display:none;"><i class="fas fa-store"></i></div>
+                <div>
+                    <div id="roleText" style="font-weight:700;color:#1e293b;">Registro como Aliado</div>
+                    <div style="font-size:12px;color:#64748b;">Todos los campos con <span
+                            style="color:#ff4757;">*</span> son obligatorios</div>
+                </div>
+            </div>
+
+            <h1 id="pageTitle">Registro de Aliado</h1>
+            <p class="subtitle" id="pageSubtitle">Completa la información de tu negocio</p>
+
+            <!-- Formulario -->
+            <form id="registerAliadoForm" enctype="multipart/form-data">
+
+                <!-- SECCIÓN 1: Datos del Negocio -->
+                <div class="section-title"><i class="fas fa-store-alt"></i> Datos del Negocio</div>
+
+                <div class="form-group">
+                    <label>Nombre del Local/Negocio <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="nombre_local" name="nombre_local" required
+                        placeholder="Ej: Clínica VetCare, Tienda PetShop">
+                    <div class="error" id="nombre_localError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Descripción del Negocio <span class="required">*</span></label>
+                    <textarea class="form-input" id="descripcion" name="descripcion" required
+                        placeholder="Describe tus servicios, especialidades, años de experiencia, etc."></textarea>
+                    <div class="error" id="descripcionError"></div>
+                </div>
+
+                <!-- Campos específicos por tipo -->
+                <div id="vetFields" style="display:none;">
+                    <div class="form-group">
+                        <label>Precio de Consulta General (COP)</label>
+                        <input type="number" class="form-input" id="precio_consulta" name="precio_consulta"
+                            placeholder="50000">
+                    </div>
+                    <div class="form-group">
+                        <label>Servicios Principales</label>
+                        <textarea class="form-input" id="servicios" name="servicios"
+                            placeholder="Consulta general, vacunación, cirugía, urgencias, peluquería..."></textarea>
+                    </div>
+                </div>
+
+                <div id="tiendaFields" style="display:none;">
+                    <div class="form-group">
+                        <label>Tipo de Productos Principales</label>
+                        <input type="text" class="form-input" id="tipo_alimento" name="tipo_alimento"
+                            placeholder="Ej: Alimento premium, juguetes, accesorios, ropa">
+                    </div>
+                    <div class="form-group">
+                        <label>Razas Recomendadas (opcional)</label>
+                        <textarea class="form-input" id="razas_recomendadas" name="razas_recomendadas"
+                            placeholder="Ej: Labrador, Pastor Alemán, Bulldog Francés"></textarea>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 2: Ubicación -->
+                <div class="section-title"><i class="fas fa-map-marker-alt"></i> Ubicación del Local</div>
+
+                <div class="form-group">
+                    <label>Dirección del local <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="direccion" name="direccion" required
+                        placeholder="Ej: Cra 5 # 12-34, Cali, Valle del Cauca">
+                    <div class="error" id="direccionError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Link de Google Maps (opcional pero recomendado)</label>
+                    <input type="url" class="form-input" id="google_maps_url" name="google_maps_url"
+                        placeholder="https://maps.google.com/?q=..." oninput="previewMaps(this.value)">
+                    <div class="maps-hint">
+                        <i class="fas fa-info-circle" style="color:#667eea;"></i>
+                        Abre Google Maps → busca tu local → copia el link desde "Compartir"
+                    </div>
+                    <div class="maps-preview" id="mapsPreview">
+                        <iframe id="mapsIframe" src="" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 3: Fotos del Local -->
+                <div class="section-title"><i class="fas fa-camera"></i> Fotos del Local (para verificación)</div>
+
+                <div class="form-group">
+                    <label>Sube fotos reales de tu negocio <span class="required">*</span> <span
+                            style="font-weight:400;color:#94a3b8;">(mín. 1, máx. 3)</span></label>
+                    <div class="photo-upload-area" onclick="document.getElementById('fotos_local').click()">
+                        <input type="file" id="fotos_local" name="fotos_local[]" accept="image/*" multiple
+                            style="display:none;" onchange="previewPhotos(this)">
+                        <div class="photo-upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                        <div class="photo-upload-text">Haz clic aquí para subir fotos de tu local</div>
+                        <div class="photo-upload-hint">JPG, PNG o WebP — Máximo 5MB por foto</div>
+                    </div>
+                    <div class="photo-previews" id="photoPreviews"></div>
+                    <div class="error" id="fotos_localError"></div>
+                </div>
+
+                <!-- SECCIÓN 4: Datos del Responsable -->
+                <div class="section-title"><i class="fas fa-user-tie"></i> Datos del Responsable</div>
+
+                <div class="form-group">
+                    <label>Nombre del Responsable <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="nombre" name="nombre" required
+                        placeholder="Tu nombre completo">
+                    <div class="error" id="nombreError"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email <span class="required">*</span></label>
+                        <input type="email" class="form-input" id="email" name="email" required
+                            placeholder="correo@negocio.com">
+                        <div class="error" id="emailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono <span class="required">*</span></label>
+                        <input type="tel" class="form-input" id="telefono" name="telefono" required
+                            placeholder="3001234567">
+                        <div class="error" id="telefonoError"></div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 5: Contraseña -->
+                <div class="section-title"><i class="fas fa-lock"></i> Acceso a la cuenta</div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Contraseña <span class="required">*</span></label>
+                        <input type="password" class="form-input" id="password" name="password" required minlength="8"
+                            placeholder="Mínimo 8 caracteres">
+                        <div class="error" id="passwordError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirmar Contraseña <span class="required">*</span></label>
+                        <input type="password" class="form-input" id="confirmPassword" name="confirmPassword" required
+                            placeholder="Repite la contraseña">
+                        <div class="error" id="confirmPasswordError"></div>
+                    </div>
+                </div>
+
+                <!-- Términos -->
+                <div class="form-group" style="margin-top:10px;">
+                    <div class="checkbox">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms" style="margin:0;font-weight:500;">Acepto los <a href="#"
+                                style="color:#667eea;">términos y condiciones</a> para aliados RUGAL</label>
+                    </div>
+                    <div class="error" id="termsError"></div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="newsletter" name="newsletter" checked>
+                        <label for="newsletter" style="margin:0;font-weight:500;">Quiero recibir novedades y
+                            oportunidades de negocio</label>
+                    </div>
+                </div>
+
+                <input type="hidden" id="rol" name="rol" value="">
+
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> Enviar Solicitud de Registro
+                </button>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p style="margin-top:12px;color:#64748b;">Enviando solicitud...</p>
+                </div>
+            </form>
+
+            <!-- Panel de éxito (se muestra luego del submit exitoso) -->
+            <div class="success-panel" id="successPanel">
+                <div class="success-icon"><i class="fas fa-check"></i></div>
+                <h2>¡Solicitud Enviada!</h2>
+                <p>Tu registro fue recibido correctamente. El equipo de <strong>RUGAL</strong> revisará la información y
+                    verificará tu negocio.</p>
+                <div class="success-msg-box">
+                    <i class="fas fa-clock" style="color:#667eea;"></i>
+                    <strong>¿Qué sigue?</strong><br><br>
+                    Un administrador de RUGAL verificará tus datos y fotos para activar tu cuenta. Recibirás una
+                    notificación o correo cuando tu perfil esté activo en la plataforma.
+                </div>
+                <p style="margin-top:18px;">Mientras tanto puedes intentar iniciar sesión — si no hay acceso aún,
+                    significa que la verificación está pendiente.</p>
+                <a href="login.php"
+                    style="display:inline-block;margin-top:20px;padding:12px 28px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border-radius:12px;text-decoration:none;font-weight:700;">
+                    <i class="fas fa-sign-in-alt"></i> Ir al Login
+                </a>
+            </div>
+
+            <div class="login-link">
+                ¿Ya tienes una cuenta? <a href="login.html">Iniciar Sesión</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Obtener tipo de aliado desde URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const tipoAliado = urlParams.get('tipo');
+        const rolInput = document.getElementById('rol');
+
+        if (tipoAliado === 'veterinaria') {
+            document.getElementById('vetIcon').style.display = 'flex';
+            document.getElementById('pageTitle').textContent = 'Registro de Veterinaria';
+            document.getElementById('pageSubtitle').textContent = 'Únete a la red de veterinarias de RUGAL';
+            document.getElementById('roleText').textContent = 'Registro como Veterinaria 🏥';
+            document.getElementById('vetFields').style.display = 'block';
+            rolInput.value = 'veterinaria';
+        } else if (tipoAliado === 'tienda') {
+            document.getElementById('storeIcon').style.display = 'flex';
+            document.getElementById('pageTitle').textContent = 'Registro de Tienda';
+            document.getElementById('pageSubtitle').textContent = 'Únete a la red de tiendas de RUGAL';
+            document.getElementById('roleText').textContent = 'Registro como Tienda 🛍️';
+            document.getElementById('tiendaFields').style.display = 'block';
+            rolInput.value = 'tienda';
+        } else {
+            window.location.href = 'registro-rol.html';
+        }
+
+        // Preview fotos
+        const selectedFiles = [];
+        function previewPhotos(input) {
+            const previews = document.getElementById('photoPreviews');
+            previews.innerHTML = '';
+            const files = Array.from(input.files).slice(0, 3);
+            files.forEach((file, idx) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const item = document.createElement('div');
+                    item.className = 'photo-preview-item';
+                    item.innerHTML = `<img src="${e.target.result}" alt="Foto ${idx + 1}">
+                        <button class="photo-preview-remove" type="button" onclick="removePhoto(${idx})">
+                            <i class="fas fa-times"></i>
+                        </button>`;
+                    previews.appendChild(item);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function removePhoto(idx) {
+            const input = document.getElementById('fotos_local');
+            const dt = new DataTransfer();
+            Array.from(input.files).forEach((f, i) => { if (i !== idx) dt.items.add(f); });
+            input.files = dt.files;
+            previewPhotos(input);
+        }
+
+        // Preview Google Maps
+        function previewMaps(url) {
+            const preview = document.getElementById('mapsPreview');
+            const iframe = document.getElementById('mapsIframe');
+            if (url && url.includes('maps')) {
+                // Try to create an embed URL
+                let embedUrl = url.replace('/maps/place/', '/maps/embed/v1/place?key=AIzaSyBFw0Qbyqfzpu_J3Bk0VJsJ7-v9V4ELe0&q=');
+                iframe.src = embedUrl;
+                preview.style.display = 'block';
+            } else {
+                preview.style.display = 'none';
+            }
+        }
+
+        // Validación
+        function validateForm() {
+            let isValid = true;
+            document.querySelectorAll('.error').forEach(e => e.style.display = 'none');
+
+            const required = ['nombre_local', 'descripcion', 'nombre', 'email', 'telefono', 'password', 'confirmPassword', 'direccion'];
+            required.forEach(field => {
+                const el = document.getElementById(field);
+                const err = document.getElementById(field + 'Error');
+                if (!el.value.trim()) {
+                    if (err) { err.textContent = 'Este campo es requerido'; err.style.display = 'block'; }
+                    isValid = false;
+                }
+            });
+
+            const email = document.getElementById('email').value;
+            if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('emailError').textContent = 'Email no válido';
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+
+            const password = document.getElementById('password').value;
+            if (password && password.length < 8) {
+                document.getElementById('passwordError').textContent = 'Mínimo 8 caracteres';
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (password !== document.getElementById('confirmPassword').value) {
+                document.getElementById('confirmPasswordError').textContent = 'Las contraseñas no coinciden';
+                document.getElementById('confirmPasswordError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (!document.getElementById('terms').checked) {
+                document.getElementById('termsError').textContent = 'Debes aceptar los términos';
+                document.getElementById('termsError').style.display = 'block';
+                isValid = false;
+            }
+
+            const fotos = document.getElementById('fotos_local').files;
+            if (fotos.length === 0) {
+                document.getElementById('fotos_localError').textContent = 'Por favor sube al menos 1 foto de tu local';
+                document.getElementById('fotos_localError').style.display = 'block';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        document.getElementById('registerAliadoForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            if (!validateForm()) return;
+
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+            loading.style.display = 'block';
+
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('proceso-registro.php', { method: 'POST', body: formData });
+                const data = await response.json();
+
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Solicitud de Registro';
+                loading.style.display = 'none';
+
+                if (data.success) {
+                    // Mostrar panel de éxito en lugar de redirigir
+                    document.getElementById('registerAliadoForm').style.display = 'none';
+                    document.getElementById('successPanel').style.display = 'block';
+                } else {
+                    if (data.errors) {
+                        for (const [field, message] of Object.entries(data.errors)) {
+                            const err = document.getElementById(field + 'Error');
+                            if (err) { err.textContent = message; err.style.display = 'block'; }
+                        }
+                    }
+                    alert(data.message || 'Error en el registro');
+                }
+            } catch (error) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Solicitud de Registro';
+                loading.style.display = 'none';
+                alert('Error de conexión. Intenta nuevamente.');
+            }
+        });
+    </script>
+</body>
+
+</html>

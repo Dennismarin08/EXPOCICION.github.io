@@ -1,0 +1,7 @@
+2026-04-02T14:07:18-05:00 - clientes_veterinaria error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rugal_db.clientes_veterinaria' doesn't exist
+2026-04-02T14:07:33-05:00 - clientes_veterinaria error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rugal_db.clientes_veterinaria' doesn't exist
+2026-04-02T14:07:34-05:00 - clientes_veterinaria error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rugal_db.clientes_veterinaria' doesn't exist
+2026-04-02T14:07:35-05:00 - clientes_veterinaria error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rugal_db.clientes_veterinaria' doesn't exist
+2026-04-02T14:10:12-05:00 - clientes_veterinaria error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rugal_db.clientes_veterinaria' doesn't exist
+2026-04-02T14:10:13-05:00 - clientes_veterinaria error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rugal_db.clientes_veterinaria' doesn't exist
+2026-04-02T14:10:16-05:00 - clientes_veterinaria error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rugal_db.clientes_veterinaria' doesn't exist

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecciona tu Rol - RUGAL</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .role-selection {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .role-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .role-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .role-card.selected {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .role-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+        }
+
+        .role-icon.user {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .role-icon.vet {
+            background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+        }
+
+        .role-icon.store {
+            background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+        }
+
+        .role-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .role-desc {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .role-features {
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .continue-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s;
+        }
+
+        .continue-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .continue-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="role-selection">
+        <div class="logo" style="margin-bottom: 30px;">
+            <div class="logo-icon">
+                <i class="fas fa-paw"></i>
+            </div>
+            <div class="logo-text">RUGAL</div>
+            <div class="logo-subtitle">Selecciona tu tipo de cuenta</div>
+        </div>
+
+        <h1 style="text-align: center; margin-bottom: 10px;">¿Cómo usarás RUGAL?</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            Selecciona el tipo de cuenta que mejor se adapte a tus necesidades
+        </p>
+
+        <div class="role-options">
+            <!-- Usuario Normal -->
+            <div class="role-card selected" data-role="usuario">
+                <div class="role-icon user">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="role-title">Dueño de Mascota</div>
+                <div class="role-desc">
+                    Quiero gestionar la salud de mis mascotas y acceder a servicios veterinarios
+                </div>
+                <div class="role-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check" style="color: #00b09b;"></i>
+                        <span>Registro de mascotas</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check" style="color: #00b09b;"></i>
+                        <span>Historial médico</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check" style="color: #00b09b;"></i>
+                        <span>Recordatorios y citas</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check" style="color: #00b09b;"></i>
+                        <span>QR de identificación</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Veterinaria -->
+            <div class="role-card" data-role="veterinaria">
+                <div class="role-icon vet">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="role-title">Veterinaria / Clínica</div>
+                <div class="role-desc">
+                    Soy profesional veterinario y quiero ofrecer mis servicios en la plataforma
+                </div>
+                <div class="role-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check" style="color: #00b09b;"></i>
+                        <span>Perfil del local</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check" style="color: #00b09b;"></i>
+                        <span>Gestionar servicios</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check" style="color: #00b09b;"></i>
+                        <span>Horarios y precios</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check" style="color: #00b09b;"></i>
+                        <span>Contactar clientes</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tienda -->
+            <div class="role-card" data-role="tienda">
+                <div class="role-icon store">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div class="role-title">Tienda de Mascotas</div>
+                <div class="role-desc">
+                    Vendo productos para mascotas y quiero llegar a más clientes
+                </div>
+                <div class="role-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check" style="color: #00b09b;"></i>
+                        <span>Mostrar productos</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check" style="color: #00b09b;"></i>
+                        <span>Fotos del local</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check" style="color: #00b09b;"></i>
+                        <span>Recomendaciones</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check" style="color: #00b09b;"></i>
+                        <span>Gestor de inventario</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form id="roleForm" action="proceso-registro.php" method="GET">
+            <input type="hidden" id="selectedRole" name="rol" value="usuario">
+            <button type="submit" class="continue-btn" id="continueBtn">
+                Continuar con Dueño de Mascota
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // Selección de rol
+        const roleCards = document.querySelectorAll('.role-card');
+        const roleInput = document.getElementById('selectedRole');
+        const continueBtn = document.getElementById('continueBtn');
+
+        const roleNames = {
+            'usuario': 'Dueño de Mascota',
+            'veterinaria': 'Veterinaria/Clínica',
+            'tienda': 'Tienda de Mascotas'
+        };
+
+        roleCards.forEach(card => {
+            card.addEventListener('click', function () {
+                // Remover selección anterior
+                roleCards.forEach(c => c.classList.remove('selected'));
+
+                // Agregar selección actual
+                this.classList.add('selected');
+
+                // Actualizar input hidden
+                const selectedRole = this.dataset.role;
+                roleInput.value = selectedRole;
+
+                // Actualizar texto del botón
+                continueBtn.textContent = `Continuar con ${roleNames[selectedRole]}`;
+            });
+        });
+
+        // Manejar el envío del formulario manualmente para evitar problemas de redirección
+        document.getElementById('roleForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevenir el envío normal del formulario
+
+            const role = roleInput.value;
+
+            // Usar un pequeño timeout para asegurar que el navegador procese el preventDefault
+            setTimeout(function () {
+                if (role === 'usuario') {
+                    window.location.href = 'registro.html';
+                } else {
+                    // Para veterinaria y tienda, redirigir pasando el parámetro 'tipo'
+                    window.location.href = 'registro-aliado.html?tipo=' + role;
+                }
+            }, 100);
+        });
+
+        console.log('✅ Selección de roles cargada');
+    </script>
+</body>
+
+</html>
